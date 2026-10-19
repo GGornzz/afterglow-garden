@@ -1,0 +1,160 @@
+<!DOCTYPE html>
+<html lang="th">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <title>Statistics | Afterglow Garden</title>
+
+    <link
+        href="https://fonts.googleapis.com/css2?family=DM+Sans:wght@400;500;600;700&family=Kanit:wght@300;400;500;600&display=swap"
+        rel="stylesheet">
+
+    <link rel="stylesheet" href="/css/style.css">
+    <script src="/js/statistics.js" defer></script>
+</head>
+
+<body class="dashboard-page">
+
+    <div class="dashboard-shell" id="statsShell" hidden>
+
+        <aside class="sidebar">
+            <a href="/dashboard.html" class="brand">
+                <span class="brand-symbol">✿</span>
+                afterglow<span class="brand-dot">.</span>
+            </a>
+
+            <nav class="sidebar-menu">
+                <a href="/dashboard.html" class="nav-link">
+                    ⌂ Dashboard
+                </a>
+                <a href="/habits.html" class="nav-link">
+                    ☑ My Habits
+                </a>
+                <a href="/garden.html" class="nav-link">
+                    ♧ My Garden
+                </a>
+                <a href="/quests.html" class="nav-link">
+                    ✦ Quests & Rewards
+                </a>
+                <a href="/shop.html" class="nav-link">
+                    ◈ Garden Shop
+                </a>
+                <a href="/statistics.html" class="nav-link active">
+                    ▥ Statistics
+                </a>
+            </nav>
+        </aside>
+
+        <main class="dashboard-content">
+
+            <header class="stats-header">
+                <div>
+                    <span class="eyebrow">YOUR PERSONAL GROWTH</span>
+                    <h1>Growth Statistics 📊</h1>
+                    <p>มองย้อนกลับไปและภูมิใจกับทุกก้าวที่เติบโต</p>
+                </div>
+
+                <a href="/habits.html" class="stats-link">
+                    + Continue Growing
+                </a>
+            </header>
+
+            <section class="stats-summary-grid">
+
+                <article class="stat-card">
+                    <div class="stat-label">TOTAL COMPLETIONS</div>
+                    <div class="stat-value" id="statCompletions">0</div>
+                </article>
+
+                <article class="stat-card">
+                    <div class="stat-label">CURRENT STREAK</div>
+                    <div class="stat-value" id="statStreak">0</div>
+                    <p class="stat-small">Consecutive days</p>
+                </article>
+
+                <article class="stat-card">
+                    <div class="stat-label">BEST STREAK</div>
+                    <div class="stat-value" id="statBest">0</div>
+                    <p class="stat-small">Your personal record</p>
+                </article>
+
+                <article class="stat-card">
+                    <div class="stat-label">GARDEN PLANTS</div>
+                    <div class="stat-value" id="statPlants">0</div>
+                </article>
+
+            </section>
+
+            <section class="statistics-panel">
+
+                <div class="stats-panel-heading">
+                    <div>
+                        <h2>Weekly Activity</h2>
+                        <p>จำนวน Habit ที่ทำสำเร็จในช่วง 7 วันที่ผ่านมา</p>
+                    </div>
+                    <span>LAST 7 DAYS</span>
+                </div>
+
+                <div id="weeklyChart" class="weekly-chart" role="img" aria-label="Weekly habit activity"></div>
+
+                <div class="stats-chart-footer">
+                    <span>Less Activity</span>
+                    <span>More Growth 🌱</span>
+                </div>
+
+            </section>
+
+            <section class="statistics-panel">
+
+                <div class="stats-panel-heading">
+                    <div>
+                        <h2>Today's Progress</h2>
+                        <p>ความก้าวหน้าของเป้าหมายประจำวันนี้</p>
+                    </div>
+                    <strong id="todayPercent">0%</strong>
+                </div>
+
+                <div class="today-progress-track">
+                    <div id="todayProgressFill" class="today-progress-fill"></div>
+                </div>
+
+                <p id="todayProgressLabel" class="stat-small">
+                    0 of 0 habits completed
+                </p>
+
+            </section>
+
+            <section class="statistics-panel">
+                <div class="stats-panel-heading">
+                    <div>
+                        <h2>Your Habit Collection</h2>
+                        <p>ภาพรวมเป้าหมายที่สร้างไว้</p>
+                    </div>
+                </div>
+
+                <div class="stats-habit-overview">
+                    <div>
+                        <strong id="statTotalHabits">0</strong>
+                        <span>Total Habits</span>
+                    </div>
+                    <div>
+                        <strong id="statActiveHabits">0</strong>
+                        <span>Active</span>
+                    </div>
+                    <div>
+                        <strong id="statPausedHabits">0</strong>
+                        <span>Paused</span>
+                    </div>
+                </div>
+            </section>
+
+            <p id="statsMessage" class="stat-small" role="status"></p>
+
+        </main>
+    </div>
+
+</body>
+
+</html>

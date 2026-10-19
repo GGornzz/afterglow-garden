@@ -1,0 +1,163 @@
+<!DOCTYPE html>
+<html lang="th">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <title>My Habits | Afterglow Garden</title>
+
+    <link
+        href="https://fonts.googleapis.com/css2?family=DM+Sans:wght@400;500;600;700&family=Kanit:wght@300;400;500;600&display=swap"
+        rel="stylesheet">
+
+    <link rel="stylesheet" href="/css/style.css">
+    <script src="/js/habits.js" defer></script>
+</head>
+
+<body class="dashboard-page">
+
+    <div class="dashboard-shell" id="habitsShell" hidden>
+
+        <aside class="sidebar">
+
+            <a href="/dashboard.html" class="brand">
+                <span class="brand-symbol">✿</span>
+                afterglow<span class="brand-dot">.</span>
+            </a>
+
+            <nav class="sidebar-menu">
+                <a href="/dashboard.html" class="nav-link">
+                    ⌂ Dashboard
+                </a>
+
+                <a href="/habits.html" class="nav-link active">
+                    ☑ My Habits
+                </a>
+
+                <a href="/garden.html" class="nav-link">
+                    ♧ My Garden
+                </a>
+                <a href="/quests.html" class="nav-link">
+                    ✦ Quests & Rewards
+                </a>
+                <a href="/shop.html" class="nav-link">
+                    ◈ Garden Shop
+                </a>
+                <a href="/statistics.html" class="nav-link">
+                    ▥ Statistics
+                </a>
+            </nav>
+
+        </aside>
+
+        <main class="dashboard-content">
+
+            <header class="habits-header">
+                <div>
+                    <span class="eyebrow">GROW EVERY DAY</span>
+                    <h1>My Habits 🌿</h1>
+                    <p>สร้างเป้าหมายเล็ก ๆ เพื่อการเติบโตที่ยิ่งใหญ่</p>
+                </div>
+
+                <button class="primary-btn add-habit-btn" id="addHabitBtn">
+                    + Add New Habit
+                </button>
+            </header>
+
+            <section class="habit-summary">
+                <article class="stat-card">
+                    <div class="stat-label">TOTAL HABITS</div>
+                    <div class="stat-value" id="totalHabits">0</div>
+                </article>
+
+                <article class="stat-card">
+                    <div class="stat-label">COMPLETED TODAY</div>
+                    <div class="stat-value" id="completedToday">0</div>
+                </article>
+
+                <article class="stat-card">
+                    <div class="stat-label">YOUR REWARDS</div>
+                    <div class="reward-stats">
+                        <span>✨ <strong id="totalXP">0</strong> XP</span>
+                        <span>🪙 <strong id="totalCoins">0</strong> Coins</span>
+                    </div>
+                </article>
+            </section>
+
+            <section class="habits-section">
+
+                <div class="habits-toolbar">
+                    <h2>Your Daily Goals</h2>
+
+                    <select id="habitFilter" class="habit-filter">
+                        <option value="all">All Habits</option>
+                        <option value="active">Active</option>
+                        <option value="paused">Paused</option>
+                    </select>
+                </div>
+
+                <p id="habitMessage" class="habit-message" role="status"></p>
+
+                <div id="habitsGrid" class="habits-grid"></div>
+
+                <div id="emptyHabits" class="empty-habits" hidden>
+                    <div class="empty-plant">🌱</div>
+                    <h3>Your journey starts here.</h3>
+                    <p>เพิ่มเป้าหมายแรกเพื่อเริ่มต้นสวนของคุณ</p>
+                </div>
+
+            </section>
+
+        </main>
+    </div>
+
+    <!-- MODAL -->
+
+    <div class="habit-modal-overlay" id="habitModal" hidden>
+        <div class="habit-modal" role="dialog" aria-modal="true" aria-labelledby="modalTitle">
+
+            <div class="habit-modal-head">
+                <h2 id="modalTitle">Create New Habit</h2>
+
+                <button type="button" id="closeHabitModal" class="modal-close" aria-label="Close">
+                    ×
+                </button>
+            </div>
+
+            <form id="habitForm">
+
+                <input type="hidden" id="habitId">
+
+                <label for="habitTitle">Habit Name</label>
+                <input id="habitTitle" type="text" placeholder="e.g. Read 30 minutes" minlength="3" maxlength="100"
+                    required>
+
+                <label for="habitCategory">Category</label>
+                <select id="habitCategory" required>
+                    <option value="Education">📚 Education</option>
+                    <option value="Health">💚 Health</option>
+                    <option value="Productivity">✨ Productivity</option>
+                    <option value="Creativity">🎨 Creativity</option>
+                    <option value="Personal">🌷 Personal</option>
+                </select>
+
+                <label for="habitDescription">Description</label>
+                <textarea id="habitDescription" maxlength="500" rows="4"
+                    placeholder="Write a little about your goal..."></textarea>
+
+                <p class="form-hint">
+                    Frequency: Daily · Rewards unlock in the next step
+                </p>
+
+                <button type="submit" class="primary-btn" id="saveHabitBtn">
+                    Save Habit
+                </button>
+
+            </form>
+        </div>
+    </div>
+
+</body>
+
+</html>

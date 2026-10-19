@@ -1,0 +1,143 @@
+<!DOCTYPE html>
+<html lang="th">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <title>Afterglow Garden | Welcome</title>
+
+    <link
+        href="https://fonts.googleapis.com/css2?family=DM+Sans:wght@400;500;600;700&family=Kanit:wght@300;400;500;600&display=swap"
+        rel="stylesheet">
+
+    <link rel="stylesheet" href="/css/style.css">
+    <script src="/js/auth.js" defer></script>
+</head>
+
+<body class="auth-page">
+
+    <main class="auth-layout">
+
+        <section class="auth-intro">
+
+            <a href="/" class="brand">
+                <span class="brand-symbol">✿</span>
+                afterglow<span class="brand-dot">.</span>
+            </a>
+
+            <div class="intro-content">
+                <span class="eyebrow">
+                    YOUR PERSONAL GROWTH SPACE
+                </span>
+
+                <h1>
+                    Small Steps,<br>
+                    <em>Beautiful Growth.</em>
+                </h1>
+
+                <p>
+                    ทุกความสำเร็จเล็ก ๆ
+                    จะกลายเป็นสวนสวยที่เติบโตไปพร้อมกับคุณ
+                </p>
+
+                <div class="plant-art">
+                    <div class="plant-sun"></div>
+                    <div class="plant-tree">
+                        <span class="tree-crown">✿</span>
+                        <span class="tree-trunk"></span>
+                    </div>
+                    <div class="ground"></div>
+                    <span class="tiny-flower flower-a">✿</span>
+                    <span class="tiny-flower flower-b">✿</span>
+                    <span class="tiny-flower flower-c">✿</span>
+                </div>
+            </div>
+
+            <div class="intro-footer">
+                GROW YOUR OWN WORLD · AFTERGLOW GARDEN
+            </div>
+
+        </section>
+
+        <section class="auth-panel">
+
+            <div class="auth-card">
+
+                <div class="auth-heading">
+                    <span class="mini-icon">🌱</span>
+                    <h2 id="formTitle">Welcome Back</h2>
+                    <p id="formSubtitle">
+                        เข้าสู่ระบบเพื่อดูสวนแห่งความสำเร็จของคุณ
+                    </p>
+                </div>
+
+                <div class="auth-tabs">
+                    <button type="button" class="auth-tab active" id="loginTab">
+                        Login
+                    </button>
+
+                    <button type="button" class="auth-tab" id="registerTab">
+                        Register
+                    </button>
+                </div>
+
+                <!-- LOGIN FORM -->
+
+                <form id="loginForm" class="auth-form">
+
+                    <label for="loginEmail">Email</label>
+                    <input type="email" id="loginEmail" placeholder="you@example.com" autocomplete="email" required>
+
+                    <label for="loginPassword">Password</label>
+                    <input type="password" id="loginPassword" placeholder="Enter your password"
+                        autocomplete="current-password" required>
+
+                    <button type="submit" class="primary-btn">
+                        Enter My Garden →
+                    </button>
+
+                </form>
+
+                <!-- REGISTER FORM -->
+
+                <form id="registerForm" class="auth-form hidden">
+
+                    <label for="registerUsername">Username</label>
+                    <input type="text" id="registerUsername" placeholder="Your name" minlength="3" maxlength="40"
+                        autocomplete="username" required>
+
+                    <label for="registerEmail">Email</label>
+                    <input type="email" id="registerEmail" placeholder="you@example.com" autocomplete="email" required>
+
+                    <label for="registerPassword">Password</label>
+                    <input type="password" id="registerPassword" placeholder="At least 8 characters" minlength="8"
+                        maxlength="72" autocomplete="new-password" required>
+
+                    <label for="confirmPassword">
+                        Confirm Password
+                    </label>
+                    <input type="password" id="confirmPassword" placeholder="Confirm your password" minlength="8"
+                        maxlength="72" autocomplete="new-password" required>
+
+                    <button type="submit" class="primary-btn">
+                        Create My Account →
+                    </button>
+
+                </form>
+
+                <p id="authMessage" class="form-message" role="status"></p>
+
+                <p class="auth-bottom">
+                    Every little step deserves to bloom. 🌿
+                </p>
+
+            </div>
+
+        </section>
+
+    </main>
+
+</body>
+
+</html>

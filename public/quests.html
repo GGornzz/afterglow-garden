@@ -1,0 +1,138 @@
+<!DOCTYPE html>
+<html lang="th">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <title>Quests & Rewards | Afterglow Garden</title>
+
+    <link
+        href="https://fonts.googleapis.com/css2?family=DM+Sans:wght@400;500;600;700&family=Kanit:wght@300;400;500;600&display=swap"
+        rel="stylesheet">
+
+    <link rel="stylesheet" href="/css/style.css">
+    <script src="/js/quests.js" defer></script>
+</head>
+
+<body class="dashboard-page">
+
+    <div class="dashboard-shell" id="questsShell" hidden>
+
+        <aside class="sidebar">
+            <a href="/dashboard.html" class="brand">
+                <span class="brand-symbol">✿</span>
+                afterglow<span class="brand-dot">.</span>
+            </a>
+
+            <nav class="sidebar-menu">
+
+                <a href="/dashboard.html" class="nav-link">
+                    ⌂ Dashboard
+                </a>
+
+                <a href="/habits.html" class="nav-link">
+                    ☑ My Habits
+                </a>
+
+                <a href="/garden.html" class="nav-link">
+                    ♧ My Garden
+                </a>
+
+                <a href="/quests.html" class="nav-link active">
+                    ✦ Quests & Rewards
+                </a>
+
+                <a href="/shop.html" class="nav-link">
+                    ◈ Garden Shop
+                </a>
+
+                <a href="/statistics.html" class="nav-link">
+                    ▥ Statistics
+                </a>
+
+            </nav>
+        </aside>
+
+        <main class="dashboard-content">
+
+            <header class="quest-header">
+                <div>
+                    <span class="eyebrow">YOUR LITTLE ADVENTURE</span>
+                    <h1>Quests & Rewards ✨</h1>
+                    <p>
+                        ทุกความสำเร็จมีคุณค่า
+                        มาสะสมรางวัลให้สวนของคุณกัน
+                    </p>
+                </div>
+            </header>
+
+            <section class="quest-summary">
+
+                <article class="stat-card">
+                    <div class="stat-label">YOUR LEVEL</div>
+                    <div class="stat-value" id="questLevel">—</div>
+                </article>
+
+                <article class="stat-card">
+                    <div class="stat-label">TOTAL XP</div>
+                    <div class="stat-value" id="questXP">—</div>
+                </article>
+
+                <article class="stat-card">
+                    <div class="stat-label">YOUR COINS</div>
+                    <div class="stat-value" id="questCoins">—</div>
+                </article>
+
+            </section>
+
+            <section class="quest-intro-banner">
+                <span class="eyebrow">TODAY'S JOURNEY</span>
+                <h2>Let your achievements bloom.</h2>
+                <p>
+                    ทำเป้าหมายในชีวิตประจำวันให้สำเร็จ
+                    เพื่อปลดล็อกความสำเร็จและรับรางวัลพิเศษ
+                </p>
+                <a href="/habits.html" class="quest-habits-link">
+                    Go to My Habits →
+                </a>
+            </section>
+
+            <p id="questMessage" class="quest-message" role="status"></p>
+
+            <section class="quest-section">
+
+                <div class="quest-section-heading">
+                    <div>
+                        <h2>🌱 Daily Quests</h2>
+                        <p>ภารกิจประจำวันที่สามารถทำใหม่ได้ทุกวัน</p>
+                    </div>
+                    <span id="questDate"></span>
+                </div>
+
+                <div id="dailyQuestGrid" class="quest-grid">
+                </div>
+
+            </section>
+
+            <section class="quest-section">
+
+                <div class="quest-section-heading">
+                    <div>
+                        <h2>🏆 Achievements</h2>
+                        <p>ความสำเร็จพิเศษที่ปลดล็อกได้ครั้งเดียว</p>
+                    </div>
+                </div>
+
+                <div id="achievementGrid" class="quest-grid">
+                </div>
+
+            </section>
+
+        </main>
+
+    </div>
+
+</body>
+
+</html>

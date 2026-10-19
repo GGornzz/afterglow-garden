@@ -1,0 +1,133 @@
+<!DOCTYPE html>
+<html lang="th">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <title>Garden Shop | Afterglow Garden</title>
+
+    <link
+        href="https://fonts.googleapis.com/css2?family=DM+Sans:wght@400;500;600;700&family=Kanit:wght@300;400;500;600&display=swap"
+        rel="stylesheet">
+
+    <link rel="stylesheet" href="/css/style.css">
+    <script src="/js/shop.js" defer></script>
+</head>
+
+<body class="dashboard-page">
+    <div class="dashboard-shell" id="shopShell" hidden>
+
+        <aside class="sidebar">
+            <a href="/dashboard.html" class="brand">
+                <span class="brand-symbol">✿</span>
+                afterglow<span class="brand-dot">.</span>
+            </a>
+
+            <nav class="sidebar-menu">
+                <a href="/dashboard.html" class="nav-link">
+                    ⌂ Dashboard
+                </a>
+
+                <a href="/habits.html" class="nav-link">
+                    ☑ My Habits
+                </a>
+
+                <a href="/garden.html" class="nav-link">
+                    ♧ My Garden
+                </a>
+
+                <a href="/quests.html" class="nav-link">
+                    ✦ Quests & Rewards
+                </a>
+
+                <a href="/shop.html" class="nav-link active">
+                    ◈ Garden Shop
+                </a>
+
+                <a href="/statistics.html" class="nav-link">
+                    ▥ Statistics
+                </a>
+            </nav>
+        </aside>
+
+        <main class="dashboard-content">
+
+            <header class="shop-header">
+                <div>
+                    <span class="eyebrow">MAKE YOUR GARDEN UNIQUE</span>
+                    <h1>Garden Shop 🪴</h1>
+                    <p>
+                        ใช้ Coins ที่สะสมจากความสำเร็จ
+                        เพื่อเลือกของตกแต่งสวนของคุณ
+                    </p>
+                </div>
+
+                <div class="shop-wallet">
+                    <span>YOUR WALLET</span>
+                    <strong>
+                        🪙 <span id="shopCoins">0</span>
+                    </strong>
+                </div>
+            </header>
+
+            <section class="shop-hero">
+                <span class="eyebrow">A LITTLE REWARD FOR YOU</span>
+                <h2>Every effort deserves a little beauty.</h2>
+                <p>
+                    ทำ Habit และ Quest เพื่อสะสม Coins
+                    แล้วเลือกของน่ารัก ๆ มาเพิ่มให้กับสวนของคุณ
+                </p>
+                <a href="/quests.html" class="shop-quest-link">
+                    Earn More Coins →
+                </a>
+            </section>
+
+            <p id="shopMessage" class="shop-message" role="status"></p>
+
+            <section class="shop-section">
+                <div class="shop-section-heading">
+                    <div>
+                        <h2>Explore Decorations</h2>
+                        <p>Choose something lovely for your garden.</p>
+                    </div>
+
+                    <select id="shopFilter" class="shop-filter">
+                        <option value="All">All Items</option>
+                        <option value="Decorations">Decorations</option>
+                        <option value="Flowers">Flowers</option>
+                        <option value="Furniture">Furniture</option>
+                    </select>
+                </div>
+
+                <div id="shopItemsGrid" class="shop-items-grid"></div>
+            </section>
+
+            <section class="shop-section" id="inventorySection">
+                <div class="shop-section-heading">
+                    <div>
+                        <h2>🎒 My Inventory</h2>
+                        <p>ของตกแต่งทั้งหมดที่คุณเป็นเจ้าของ</p>
+                    </div>
+                    <span id="inventoryCount" class="inventory-count">
+                        0 items
+                    </span>
+                </div>
+
+                <div id="inventoryGrid" class="inventory-grid"></div>
+
+                <div id="inventoryEmpty" class="inventory-empty" hidden>
+                    <div>🪴</div>
+                    <h3>Your collection begins here.</h3>
+                    <p>
+                        ยังไม่มีของตกแต่งในกระเป๋า
+                        ลองเลือกสินค้าจากร้านด้านบน
+                    </p>
+                </div>
+            </section>
+
+        </main>
+    </div>
+</body>
+
+</html>

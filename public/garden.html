@@ -1,0 +1,236 @@
+<!DOCTYPE html>
+<html lang="th">
+
+<head>
+    <meta charset="UTF-8">
+
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <title>My Garden | Afterglow Garden</title>
+
+    <link
+        href="https://fonts.googleapis.com/css2?family=DM+Sans:wght@400;500;600;700&family=Kanit:wght@300;400;500;600&display=swap"
+        rel="stylesheet">
+
+    <link rel="stylesheet" href="/css/style.css">
+
+    <script src="/js/garden.js" defer></script>
+</head>
+
+<body class="dashboard-page">
+
+    <div class="dashboard-shell" id="gardenShell" hidden>
+
+        <aside class="sidebar">
+
+            <a href="/dashboard.html" class="brand">
+                <span class="brand-symbol">✿</span>
+                afterglow<span class="brand-dot">.</span>
+            </a>
+
+            <nav class="sidebar-menu">
+
+                <a href="/dashboard.html" class="nav-link">
+                    ⌂ Dashboard
+                </a>
+
+                <a href="/habits.html" class="nav-link">
+                    ☑ My Habits
+                </a>
+
+                <a href="/garden.html" class="nav-link active">
+                    ♧ My Garden
+                </a>
+
+                <a href="/quests.html" class="nav-link">
+                    ✦ Quests & Rewards
+                </a>
+                <a href="/shop.html" class="nav-link">
+                    ◈ Garden Shop
+                </a>
+                <a href="/statistics.html" class="nav-link">
+                    ▥ Statistics
+                </a>
+
+            </nav>
+
+        </aside>
+
+        <main class="dashboard-content">
+
+            <header class="garden-header">
+                <div>
+                    <span class="eyebrow">A PLACE TO GROW</span>
+                    <h1>My Little Garden 🌿</h1>
+                    <p>
+                        สวนแห่งความสำเร็จที่เติบโตไปพร้อมกับคุณ
+                    </p>
+                </div>
+
+                <button class="primary-btn garden-add-btn" id="plantSeedBtn" type="button">
+                    + Plant a Seed
+                </button>
+            </header>
+
+            <section class="garden-stats">
+
+                <article class="stat-card">
+                    <div class="stat-label">TOTAL PLANTS</div>
+                    <div class="stat-value" id="totalPlants">0</div>
+                </article>
+
+                <article class="stat-card">
+                    <div class="stat-label">MATURE PLANTS</div>
+                    <div class="stat-value" id="maturePlants">0</div>
+                </article>
+
+                <article class="stat-card">
+                    <div class="stat-label">TOTAL GROWTH POINTS</div>
+                    <div class="stat-value" id="totalGrowth">0</div>
+                </article>
+
+            </section>
+
+            <section class="virtual-garden">
+                <div class="garden-scene-heading">
+                    <h2>My Growing World</h2>
+                    <span>✦ Every step matters</span>
+                </div>
+
+                <div id="gardenScene" class="garden-scene">
+                    <!-- ต้นไม้จากฐานข้อมูลจะปรากฏตรงนี้ -->
+                </div>
+
+                <p id="gardenEmpty" class="garden-empty" hidden>
+                    🌱 สวนของคุณยังว่างอยู่
+                    เริ่มปลูกต้นไม้จาก Habit แรกได้เลย!
+                </p>
+            </section>
+
+            <!-- GARDEN DECORATION AREA -->
+
+            <section class="decoration-section">
+
+                <div class="decoration-heading">
+                    <div>
+                        <span class="eyebrow">
+                            MAKE THIS SPACE YOURS
+                        </span>
+
+                        <h2>Decorate Your Garden 🪴</h2>
+
+                        <p>
+                            เลือกของตกแต่งจาก Inventory
+                            แล้วคลิกช่องว่างเพื่อจัดวางในสวน
+                        </p>
+                    </div>
+
+                    <a href="/shop.html" class="decoration-shop-link">
+                        + Visit Garden Shop
+                    </a>
+                </div>
+
+                <div class="decoration-layout">
+
+                    <div class="decoration-garden">
+
+                        <div class="decoration-garden-title">
+                            <strong>My Garden Space</strong>
+                            <span id="decorSlotCount">0 / 8 placed</span>
+                        </div>
+
+                        <div id="decorSlots" class="decoration-slots" aria-label="Garden decoration slots"></div>
+
+                        <p class="decoration-hint">
+                            ✨ คลิกช่องว่างเพื่อวางของ หรือคลิกของที่วางแล้วเพื่อเก็บคืน
+                        </p>
+                    </div>
+
+                    <aside class="decoration-inventory">
+
+                        <h3>🎒 My Decorations</h3>
+                        <p>
+                            เลือกไอเทมก่อน แล้วคลิกช่องในสวน
+                        </p>
+
+                        <div id="decorInventory" class="decoration-inventory-list"></div>
+
+                        <p id="decorSelected" class="decor-selected">
+                            ยังไม่ได้เลือกไอเทม
+                        </p>
+
+                        <p id="decorMessage" class="decor-message" role="status"></p>
+
+                    </aside>
+
+                </div>
+
+            </section>
+
+            <section class="garden-plants-section">
+
+                <h2>Your Plants</h2>
+
+                <div id="gardenMessage" role="status"></div>
+
+                <div id="plantsGrid" class="garden-plants-grid">
+                </div>
+
+            </section>
+
+        </main>
+    </div>
+
+    <!-- PLANT SEED MODAL -->
+
+    <div id="plantModal" class="plant-modal-overlay" hidden>
+
+        <div class="plant-modal" role="dialog" aria-modal="true" aria-labelledby="plantModalTitle">
+
+            <div class="habit-modal-head">
+
+                <h2 id="plantModalTitle">
+                    Plant a New Seed 🌱
+                </h2>
+
+                <button id="closePlantModal" class="modal-close" type="button" aria-label="Close">
+                    ×
+                </button>
+
+            </div>
+
+            <form id="plantForm">
+
+                <label for="selectHabit">
+                    Choose Your Habit
+                </label>
+
+                <select id="selectHabit" required></select>
+
+                <label for="selectPlant">
+                    Choose Your Plant
+                </label>
+
+                <select id="selectPlant" required>
+                    <option value="fern">🌿 Little Fern</option>
+                    <option value="flower">🌻 Blooming Flower</option>
+                    <option value="tree">🌳 Little Oak</option>
+                </select>
+
+                <p class="form-hint">
+                    แต่ละ Habit ปลูกต้นไม้ได้ 1 ต้น
+                    และจะเติบโตตามจำนวนวันที่ทำสำเร็จ
+                </p>
+
+                <button type="submit" id="savePlantBtn" class="primary-btn">
+                    🌱 Plant My Seed
+                </button>
+
+            </form>
+
+        </div>
+    </div>
+
+</body>
+
+</html>

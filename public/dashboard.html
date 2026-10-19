@@ -1,0 +1,191 @@
+<!DOCTYPE html>
+<html lang="th">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <title>Dashboard | Afterglow Garden</title>
+
+    <link
+        href="https://fonts.googleapis.com/css2?family=DM+Sans:wght@400;500;600;700&family=Kanit:wght@300;400;500;600&display=swap"
+        rel="stylesheet">
+
+    <link rel="stylesheet" href="/css/style.css">
+    <script src="/js/dashboard.js" defer></script>
+</head>
+
+<body class="dashboard-page">
+
+    <div class="dashboard-shell" id="dashboardShell" hidden>
+
+        <aside class="sidebar">
+
+            <a href="/dashboard.html" class="brand">
+                <span class="brand-symbol">✿</span>
+                afterglow<span class="brand-dot">.</span>
+            </a>
+
+            <nav class="sidebar-menu">
+                <a href="/dashboard.html" class="nav-link active">
+                    ⌂ Dashboard
+                </a>
+
+                <a href="/habits.html" class="nav-link">
+                    ☑ My Habits
+                </a>
+
+                <a href="/garden.html" class="nav-link">
+                    ♧ My Garden
+                </a>
+                <a href="/quests.html" class="nav-link">
+                    ✦ Quests & Rewards
+                </a>
+                <a href="/shop.html" class="nav-link">
+                    ◈ Garden Shop
+                </a>
+                <a href="/statistics.html" class="nav-link">
+                    ▥ Statistics
+                </a>
+            </nav>
+
+            <button id="logoutBtn" class="logout-btn">
+                ↪ Logout
+            </button>
+
+        </aside>
+
+        <main class="dashboard-content">
+
+            <header class="dashboard-header">
+
+                <div>
+                    <span class="eyebrow">YOUR GROWTH JOURNEY</span>
+
+                    <h1 id="welcomeTitle">
+                        Welcome to your garden
+                    </h1>
+
+                    <p>
+                        ทุกก้าวเล็ก ๆ ของคุณมีความหมายเสมอ 🌿
+                    </p>
+                </div>
+
+                <div class="user-avatar">🌱</div>
+
+            </header>
+
+            <section class="stats-grid">
+
+                <article class="stat-card">
+                    <div class="stat-label">YOUR LEVEL</div>
+                    <div class="stat-value" id="userLevel">—</div>
+                </article>
+
+                <article class="stat-card">
+                    <div class="stat-label">TOTAL XP</div>
+                    <div class="stat-value" id="userXP">—</div>
+                </article>
+
+                <article class="stat-card">
+                    <div class="stat-label">YOUR COINS</div>
+                    <div class="stat-value" id="userCoins">—</div>
+                </article>
+
+            </section>
+
+            <!-- DASHBOARD OVERVIEW -->
+
+            <section class="dashboard-overview">
+
+                <div class="dashboard-overview-head">
+                    <h2>Today's Growth 🌿</h2>
+                    <span id="dashboardDate"></span>
+                </div>
+
+                <div class="dashboard-overview-grid">
+
+                    <article class="overview-mini-card">
+                        <span>✅ Completed Today</span>
+                        <strong id="dashboardCompleted">0</strong>
+                    </article>
+
+                    <article class="overview-mini-card">
+                        <span>🔥 Current Streak</span>
+                        <strong id="dashboardStreak">0</strong>
+                    </article>
+
+                    <article class="overview-mini-card">
+                        <span>🌳 Garden Plants</span>
+                        <strong id="dashboardPlants">0</strong>
+                    </article>
+
+                    <article class="overview-mini-card">
+                        <span>📚 Active Habits</span>
+                        <strong id="dashboardHabits">0</strong>
+                    </article>
+
+                </div>
+
+                <div class="dashboard-progress-card">
+                    <div class="dashboard-progress-head">
+                        <strong>Daily Progress</strong>
+                        <span id="dashboardProgressPercent">0%</span>
+                    </div>
+
+                    <div class="today-progress-track">
+                        <div id="dashboardProgressFill" class="today-progress-fill"></div>
+                    </div>
+
+                    <p id="dashboardProgressLabel">
+                        Ready for a fresh start?
+                    </p>
+                </div>
+
+                <a href="/statistics.html" class="dashboard-stat-link">
+                    View Full Statistics →
+                </a>
+
+            </section>
+
+            <section class="garden-banner">
+
+                <span class="eyebrow">YOUR PERSONAL SPACE</span>
+
+                <h2>My Little Garden</h2>
+
+                <p>
+                    Your garden is waiting to bloom.
+                    Start building habits and watch your world grow.
+                </p>
+
+                <div class="garden-preview">
+                    🌱 🌿 🌳
+                </div>
+
+            </section>
+
+            <section class="content-card">
+
+                <h2>Today's Habits</h2>
+
+                <p class="placeholder-note">
+                    🌼 ระบบสมาชิกพร้อมใช้งานแล้ว!
+                    ขั้นตอนถัดไปเราจะสร้างระบบเพิ่มเป้าหมาย
+                    บันทึกความสำเร็จ และทำให้ต้นไม้เติบโตจริง
+                </p>
+
+                <p class="placeholder-note">
+                    <strong>Signed in as:</strong>
+                    <span id="userEmail">—</span>
+                </p>
+
+            </section>
+
+        </main>
+
+    </div>
+
+</body>
+
+</html>
