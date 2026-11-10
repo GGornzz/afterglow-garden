@@ -68,25 +68,138 @@ function renderGardenScene() {
     $('gardenEmpty').hidden = gardenPlants.length > 0;
 
     if (gardenPlants.length === 0) {
-        scene.appendChild(
-            makeText(
-                'div',
-                'garden-placeholder',
-                '🌱 Your little garden begins here.'
-            )
+        const empty = makeText(
+            'div',
+            'garden-placeholder',
+            '🌱 Your little garden begins here.'
         );
+
+        scene.appendChild(empty);
         return;
     }
 
     gardenPlants.forEach(plant => {
+        // พื้นที่ปลูกต้นไม้แต่ละต้น
         const plot = document.createElement('div');
-        plot.className = 'garden-plot';
+        plot.className = 'garden-plot garden-plot--2d';
 
-        const emoji = makeText(
-            'div',
-            'garden-scene-plant',
-            plantEmoji(plant)
+        // ชนิดต้นไม้
+        const allowedTypes = ['tree', 'flower', 'fern'];
+        const plantType = allowedTypes.includes(plant.plantType)
+            ? plant.plantType
+            : 'tree';
+
+        // ระดับต้นไม้ 1-4
+        const stage = Math.max(
+            1,
+            Math.min(4, Number(plant.stage) || 1)
         );
+
+        // สร้างต้นไม้ 2D ด้วย CSS
+        const artwork = document.createElement('div');
+
+        artwork.className =
+            `plant-art type-${plantType} stage-${stage}`;
+
+        artwork.setAttribute(
+            'role',
+            'img'
+        );
+
+        artwork.setAttribute(
+            'aria-label',
+            `${plant.plantName}, ${plant.stageName}`
+        );
+
+        const seed = document.createElement('div');
+        seed.className = 'plant-seed';
+
+        const stem = document.createElement('div');
+        stem.className = 'plant-stem';
+
+        const leafLeft = document.createElement('div');
+        leafLeft.className = 'plant-leaf plant-leaf-left';
+
+        const leafRight = document.createElement('div');
+        leafRight.className = 'plant-leaf plant-leaf-right';
+
+        const crown = document.createElement('div');
+        crown.className = 'plant-crown';
+
+        const bloom = document.createElement('div');
+        bloom.className = 'plant-bloom';
+
+        artwork.append(
+            seed,
+            stem,
+            leafLeft,
+            leafRight,
+            crown,
+            bloom
+        );
+
+        // ===================================
+        // STEP 17 — DETAILED 2D PLANT ART
+        // ===================================
+
+        // ต้นโอ๊ก: เพิ่มกิ่งและพุ่มไม้หลายชั้น
+        if (plantType === 'tree') {
+            const details = document.createElement('div');
+            details.className = 'tree-details';
+
+            const branchLeft = document.createElement('div');
+            branchLeft.className = 'tree-branch tree-branch-left';
+
+            const branchRight = document.createElement('div');
+            branchRight.className = 'tree-branch tree-branch-right';
+
+            details.append(branchLeft, branchRight);
+
+            for (let i = 1; i <= 5; i++) {
+                const foliage = document.createElement('div');
+                foliage.className = `tree-foliage foliage-${i}`;
+                details.appendChild(foliage);
+            }
+
+            artwork.appendChild(details);
+        }
+
+        // ดอกไม้: กลีบดอก 8 กลีบและเกสรกลาง
+        if (plantType === 'flower') {
+            const flowerHead = document.createElement('div');
+            flowerHead.className = 'flower-head';
+
+            for (let i = 1; i <= 8; i++) {
+                const petal = document.createElement('div');
+                petal.className = `flower-petal petal-${i}`;
+                flowerHead.appendChild(petal);
+            }
+
+            const center = document.createElement('div');
+            center.className = 'flower-center';
+
+            flowerHead.appendChild(center);
+            artwork.appendChild(flowerHead);
+        }
+
+        // เฟิร์น: ใบเฟิร์น 6 ก้าน
+        if (plantType === 'fern') {
+            const fernLeaves = document.createElement('div');
+            fernLeaves.className = 'fern-details';
+
+            for (let i = 1; i <= 6; i++) {
+                const frond = document.createElement('div');
+                frond.className = `fern-frond frond-${i}`;
+
+                const vein = document.createElement('div');
+                vein.className = 'fern-vein';
+
+                frond.appendChild(vein);
+                fernLeaves.appendChild(frond);
+            }
+
+            artwork.appendChild(fernLeaves);
+        }
 
         const label = makeText(
             'div',
@@ -94,16 +207,17 @@ function renderGardenScene() {
             plant.plantName
         );
 
-        const stage = makeText(
+        const stageLabel = makeText(
             'div',
             'garden-scene-stage',
-            plant.stageName
+            `${plant.stageName} · ${plant.completedDays} days`
         );
 
-        plot.append(emoji, label, stage);
+        plot.append(artwork, label, stageLabel);
         scene.appendChild(plot);
     });
 }
+
 
 function createPlantCard(plant) {
     const card = document.createElement('article');
@@ -208,6 +322,10 @@ async function loadGarden() {
         renderGardenCards();
         updateGardenStats();
 
+        // วาดของตกแต่งใหม่เมื่อฉากต้นไม้ถูกโหลดซ้ำ
+        if (typeof window.renderFreeGarden === 'function') {
+            window.renderFreeGarden();
+        }
         console.log('🌿 Garden loaded:', gardenPlants);
     } catch (error) {
         showGardenMessage(error.message, true);
@@ -408,6 +526,31 @@ function renderDecorInventory() {
 
         button.disabled = decorBusy;
 
+        // STEP 18 — ลากไอเทมจาก Inventory
+        button.draggable = !decorBusy;
+
+        button.addEventListener('dragstart', event => {
+            if (decorBusy) {
+                event.preventDefault();
+                return;
+            }
+
+            selectedDecorItem = item.id;
+
+            event.dataTransfer.setData(
+                'text/plain',
+                item.id
+            );
+
+            event.dataTransfer.effectAllowed = 'copy';
+
+            button.classList.add('is-dragging');
+        });
+
+        button.addEventListener('dragend', () => {
+            button.classList.remove('is-dragging');
+        });
+
         const icon = decorText(
             'span',
             'decor-item-icon',
@@ -481,15 +624,62 @@ function renderDecorSlots() {
             button.addEventListener('click', () => {
                 removeDecoration(decoration);
             });
+
         } else {
             button.title = selectedDecorItem
-                ? 'คลิกเพื่อวางของตกแต่ง'
-                : 'เลือกไอเทมจาก Inventory ก่อน';
+                ? 'คลิกหรือลากไอเทมมาวาง'
+                : 'เลือกหรือลากไอเทมจาก Inventory';
 
+            // วิธีเดิม: คลิกไอเทม แล้วคลิกช่อง
             button.addEventListener('click', () => {
                 placeDecoration(slot);
             });
+
+            // วิธีใหม่: Drag & Drop
+            button.addEventListener('dragover', event => {
+                if (decorBusy) return;
+
+                event.preventDefault();
+                event.dataTransfer.dropEffect = 'copy';
+
+                button.classList.add('drag-over');
+            });
+
+            button.addEventListener('dragleave', event => {
+                if (!button.contains(event.relatedTarget)) {
+                    button.classList.remove('drag-over');
+                }
+            });
+
+            button.addEventListener('drop', event => {
+                event.preventDefault();
+                button.classList.remove('drag-over');
+
+                if (decorBusy) return;
+
+                const itemId = event.dataTransfer.getData(
+                    'text/plain'
+                );
+
+                const item = decorationInventory.find(
+                    product =>
+                        product.id === itemId &&
+                        product.quantity > 0
+                );
+
+                if (!item) {
+                    showDecorMessage(
+                        'ไม่พบไอเทมที่สามารถวางได้',
+                        true
+                    );
+                    return;
+                }
+
+                selectedDecorItem = item.id;
+                placeDecoration(slot);
+            });
         }
+
 
         container.appendChild(button);
     }

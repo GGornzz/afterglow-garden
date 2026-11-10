@@ -219,6 +219,12 @@ async function loadHabits() {
         allHabits = data.habits || [];
 
         renderHabits();
+
+        // อัปเดต Daily Progress ของ Habits 2.0
+        if (typeof window.refreshHabitsV2 === 'function') {
+            window.refreshHabitsV2(allHabits);
+        }
+
         await loadRewards();
 
         console.log('🌿 Habits loaded:', allHabits);
@@ -244,6 +250,14 @@ async function completeHabit(habit, button) {
             `/api/habits/${habit._id}/complete`,
             { method: 'POST' }
         );
+        // แสดงเอฟเฟกต์เมื่อ Backend ยืนยันว่า Complete สำเร็จ
+        if (typeof window.celebrateHabitV2 === 'function') {
+            window.celebrateHabitV2(
+                habit.title,
+                data.reward.xp,
+                data.reward.coins
+            );
+        }
 
         showMessage(
             `🌱 ${habit.title} สำเร็จ! ` +

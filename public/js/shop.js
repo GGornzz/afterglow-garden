@@ -144,6 +144,13 @@ function renderShop() {
     items.forEach(item => {
         grid.appendChild(createShopCard(item));
     });
+    if (typeof window.refreshShopV2 === 'function') {
+        window.refreshShopV2(
+            shopItems,
+            ownedItems,
+            currentCoins
+        );
+    }
 }
 
 function createInventoryCard(item) {
@@ -207,6 +214,15 @@ async function loadShop() {
         renderShop();
         renderInventory();
 
+        // อัปเกรดการ์ดสินค้าและ Inventory
+        if (typeof window.refreshShopV2 === 'function') {
+            window.refreshShopV2(
+                shopItems,
+                ownedItems,
+                currentCoins
+            );
+        }
+
         console.log('Shop loaded:', shopItems);
         console.log('Inventory loaded:', ownedItems);
     } catch (error) {
@@ -233,6 +249,13 @@ async function purchaseItem(item) {
                 itemId: item.id
             })
         });
+        // แสดงหน้าต่างฉลองเมื่อ Backend ยืนยันว่าซื้อสำเร็จ
+        if (typeof window.celebratePurchaseV2 === 'function') {
+            window.celebratePurchaseV2(
+                item,
+                data.coins
+            );
+        }
 
         currentCoins = data.coins;
         ownedItems = data.inventory || [];
@@ -250,6 +273,15 @@ async function purchaseItem(item) {
     } finally {
         buying = false;
         renderShop();
+        renderInventory();
+
+        if (typeof window.refreshShopV2 === 'function') {
+            window.refreshShopV2(
+                shopItems,
+                ownedItems,
+                currentCoins
+            );
+        }
     }
 }
 

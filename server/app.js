@@ -14,6 +14,7 @@ const questRoutes = require('./routes/questRoutes');
 const gardenRoutes = require('./routes/gardenRoutes');
 const habitRoutes = require('./routes/habitRoutes');
 const statRoutes = require('./routes/statRoutes');
+const freeGardenRoutes = require('./routes/freeGardenRoutes');
 const app = express();
 
 const PORT = Number(process.env.PORT) || 3000;
@@ -124,6 +125,7 @@ async function startServer() {
         app.use('/api/quests', questRoutes);
         app.use('/api/shop', shopRoutes);
         app.use('/api/decor', decorRoutes);
+        app.use('/api/free-garden', freeGardenRoutes);
         app.use('/api/statistics', statRoutes);
         // ป้องกันการแคชหน้า Dashboard
         app.get('/dashboard.html', (req, res) => {

@@ -2306,3 +2306,2823 @@ a {
         padding: 16px;
     }
 }
+
+/* ========================================
+   AFTERGLOW 2.0 — STEP 16
+   COZY 2D GARDEN SCENE
+   ======================================== */
+.garden-scene {
+    position: relative;
+    isolation: isolate;
+    overflow: hidden;
+
+    display: grid;
+    grid-template-columns: repeat(auto-fit,
+            minmax(145px, 1fr));
+
+    align-items: end;
+    gap: 24px;
+
+    min-height: 410px;
+    padding: 100px 28px 48px;
+    border: 3px solid #c6d7ba;
+    border-radius: 24px;
+
+    background:
+        radial-gradient(ellipse at 24% 15%,
+            #ffffffb8 0 7%,
+            transparent 8%),
+        radial-gradient(ellipse at 78% 20%,
+            #ffffffa6 0 9%,
+            transparent 10%),
+        linear-gradient(to bottom,
+            #d8edf0 0%,
+            #ebf5ed 38%,
+            #b7d99e 39%,
+            #a5ca8d 100%);
+
+    box-shadow:
+        inset 0 7px 20px #ffffff60,
+        0 12px 30px #294a3710;
+}
+
+/* ทุ่งหญ้าด้านหน้า */
+.garden-scene::before {
+    content: "";
+    position: absolute;
+    z-index: -1;
+    left: -15%;
+    right: -15%;
+    bottom: -38px;
+    height: 64%;
+
+    background:
+        radial-gradient(ellipse at 20% 50%,
+            #c6e1a8 0 28%,
+            transparent 29%),
+        radial-gradient(ellipse at 75% 35%,
+            #a7cf8d 0 32%,
+            transparent 33%),
+        linear-gradient(#afd497,
+            #8ebd78);
+
+    border-radius: 50% 50% 0 0;
+}
+
+/* เส้นทางเดินสีครีมในสวน */
+.garden-scene::after {
+    content: "";
+    position: absolute;
+    z-index: -1;
+
+    left: 25%;
+    right: 25%;
+    bottom: -18px;
+    height: 65px;
+
+    background: #e5d7af;
+    border: 5px solid #f2e8ca;
+    border-radius: 50% 50% 0 0;
+
+    box-shadow: 0 0 0 5px #86ae7440;
+}
+
+/* กระถางหรือช่องปลูกแบบใหม่ */
+.garden-scene .garden-plot--2d {
+    position: relative;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: flex-end;
+    gap: 7px;
+
+    min-width: 0;
+    min-height: 220px;
+    padding: 12px 8px 16px;
+
+    background: transparent;
+    border: none;
+    border-radius: 18px;
+
+    text-align: center;
+    transition: transform 0.25s ease;
+}
+
+.garden-scene .garden-plot--2d:hover {
+    transform: translateY(-7px);
+}
+
+/* เงาของต้นไม้บนพื้น */
+.garden-plot--2d::before {
+    content: "";
+    position: absolute;
+    bottom: 54px;
+    left: 50%;
+    transform: translateX(-50%);
+
+    width: 100px;
+    height: 15px;
+    border-radius: 50%;
+    background: #507e4940;
+}
+
+/* พื้นที่สำหรับวาดต้นไม้ */
+.plant-art {
+    position: relative;
+    width: 120px;
+    height: 145px;
+    flex-shrink: 0;
+
+    transform-origin: 50% 95%;
+    animation: plant-sway 4s ease-in-out infinite;
+}
+
+/* องค์ประกอบพื้นฐาน */
+.plant-seed,
+.plant-stem,
+.plant-leaf,
+.plant-crown,
+.plant-bloom {
+    position: absolute;
+}
+
+.plant-seed {
+    display: none;
+    width: 28px;
+    height: 21px;
+    bottom: 8px;
+    left: 46px;
+
+    background: #9d7651;
+    border: 3px solid #805b3c;
+    border-radius: 60% 45% 55% 50%;
+    transform: rotate(-20deg);
+}
+
+.plant-stem {
+    width: 13px;
+    height: 60px;
+    bottom: 8px;
+    left: 53px;
+
+    background: #669455;
+    border-radius: 9px;
+    transform-origin: bottom center;
+}
+
+.plant-leaf {
+    width: 39px;
+    height: 22px;
+    background: #7cb26b;
+    border: 2px solid #679756;
+    border-radius: 85% 15% 85% 15%;
+}
+
+.plant-leaf-left {
+    left: 19px;
+    bottom: 43px;
+    transform: rotate(27deg);
+}
+
+.plant-leaf-right {
+    right: 18px;
+    bottom: 58px;
+    transform: rotate(62deg) scaleX(-1);
+}
+
+.plant-crown {
+    width: 80px;
+    height: 77px;
+    bottom: 57px;
+    left: 20px;
+
+    background: #7eaf68;
+    border: 4px solid #649552;
+    border-radius: 50% 48% 46% 52%;
+
+    box-shadow:
+        inset -9px -8px 0 #6a9e59,
+        inset 8px 8px 0 #a0c78a;
+}
+
+.plant-bloom {
+    display: none;
+}
+
+/* STAGE 1 — SEED */
+
+.plant-art.stage-1 .plant-seed {
+    display: block;
+}
+
+.plant-art.stage-1 .plant-stem,
+.plant-art.stage-1 .plant-leaf,
+.plant-art.stage-1 .plant-crown,
+.plant-art.stage-1 .plant-bloom {
+    display: none;
+}
+
+/* STAGE 2 — SEEDLING */
+
+.plant-art.stage-2 .plant-stem {
+    height: 38px;
+}
+
+.plant-art.stage-2 .plant-leaf-left {
+    bottom: 31px;
+}
+
+.plant-art.stage-2 .plant-leaf-right {
+    bottom: 39px;
+}
+
+.plant-art.stage-2 .plant-crown {
+    display: none;
+}
+
+/* STAGE 3 — GROWING */
+
+.plant-art.stage-3 .plant-crown {
+    width: 58px;
+    height: 53px;
+    left: 31px;
+    bottom: 58px;
+}
+
+/* STAGE 4 — MATURE */
+
+.plant-art.stage-4 .plant-crown {
+    width: 100px;
+    height: 93px;
+    left: 10px;
+    bottom: 50px;
+}
+
+/* TREE — ต้นไม้ใหญ่ */
+
+.plant-art.type-tree .plant-stem {
+    background: #9c714f;
+    border: 2px solid #855d40;
+}
+
+.plant-art.type-tree.stage-4 .plant-stem {
+    width: 18px;
+    left: 51px;
+    height: 80px;
+}
+
+.plant-art.type-tree.stage-4 .plant-leaf {
+    display: none;
+}
+
+/* FLOWER — ดอกไม้ */
+
+.plant-art.type-flower .plant-crown {
+    display: none;
+}
+
+.plant-art.type-flower.stage-3 .plant-bloom,
+.plant-art.type-flower.stage-4 .plant-bloom {
+    display: block;
+    left: 37px;
+    bottom: 59px;
+    width: 46px;
+    height: 46px;
+
+    background: #f2ba67;
+    border: 9px solid #f6d48d;
+    border-radius: 50%;
+
+    box-shadow:
+        0 -20px 0 -8px #f6c7a9,
+        0 20px 0 -8px #f6c7a9,
+        20px 0 0 -8px #f6c7a9,
+        -20px 0 0 -8px #f6c7a9;
+}
+
+.plant-art.type-flower.stage-4 .plant-bloom {
+    transform: scale(1.25);
+    transform-origin: center;
+}
+
+/* FERN — เฟิร์นใบใหญ่ */
+
+.plant-art.type-fern .plant-crown {
+    display: none;
+}
+
+.plant-art.type-fern .plant-leaf {
+    background: #66a77b;
+    border-color: #4d8e68;
+    width: 49px;
+    height: 27px;
+}
+
+.plant-art.type-fern.stage-3 .plant-leaf-left,
+.plant-art.type-fern.stage-4 .plant-leaf-left {
+    transform: rotate(48deg);
+}
+
+.plant-art.type-fern.stage-3 .plant-leaf-right,
+.plant-art.type-fern.stage-4 .plant-leaf-right {
+    transform: rotate(47deg) scaleX(-1);
+}
+
+.plant-art.type-fern.stage-4 .plant-leaf {
+    width: 65px;
+    height: 35px;
+}
+
+/* ป้ายชื่อใต้ต้นไม้ */
+
+.garden-scene .garden-scene-label {
+    z-index: 1;
+    max-width: 100%;
+    padding: 5px 11px;
+
+    border: 1px solid #ffffffa8;
+    border-radius: 999px;
+    background: #ffffffde;
+
+    color: #315c3a;
+    font-size: 12px;
+    font-weight: 700;
+    overflow-wrap: anywhere;
+}
+
+.garden-scene .garden-scene-stage {
+    z-index: 1;
+    color: #3e6846;
+    font-size: 11px;
+    font-weight: 600;
+}
+
+/* เคลื่อนไหวเบา ๆ */
+@keyframes plant-sway {
+
+    0%,
+    100% {
+        transform: rotate(-2deg);
+    }
+
+    50% {
+        transform: rotate(2deg);
+    }
+}
+
+/* Responsive */
+@media (max-width: 650px) {
+    .garden-scene {
+        grid-template-columns: repeat(2,
+                minmax(0, 1fr));
+        gap: 10px;
+        padding: 75px 10px 25px;
+        min-height: 350px;
+    }
+
+    .garden-scene .garden-plot--2d {
+        min-height: 205px;
+    }
+
+    .plant-art {
+        transform: scale(0.85);
+        margin-bottom: -10px;
+    }
+}
+
+/* รองรับผู้ที่ตั้งค่าลดภาพเคลื่อนไหว */
+@media (prefers-reduced-motion: reduce) {
+    .plant-art {
+        animation: none;
+    }
+}
+
+/* ==========================================
+   AFTERGLOW GARDEN 2.0
+   STEP 17 — DETAILED PLANTS
+   ========================================== */
+
+/* จัดชั้นของภาพต้นไม้ */
+.plant-art {
+    isolation: isolate;
+}
+
+.plant-art .plant-stem {
+    z-index: 1;
+}
+
+.plant-art .plant-leaf {
+    z-index: 2;
+}
+
+.plant-art .plant-crown {
+    z-index: 3;
+}
+
+/* ==========================================
+   1. LITTLE OAK TREE
+   ========================================== */
+
+.tree-details {
+    position: absolute;
+    inset: 0;
+    z-index: 4;
+    pointer-events: none;
+}
+
+/* กิ่งไม้ */
+.tree-branch {
+    position: absolute;
+    bottom: 57px;
+    left: 56px;
+    width: 9px;
+    height: 43px;
+    background: #936846;
+    border-radius: 10px;
+    transform-origin: bottom center;
+}
+
+.tree-branch-left {
+    transform: rotate(-43deg);
+}
+
+.tree-branch-right {
+    transform: rotate(43deg);
+}
+
+/* พุ่มแต่ละชั้น */
+.tree-foliage {
+    position: absolute;
+    border: 3px solid #5c9457;
+    background: #86bc75;
+    border-radius: 48% 52% 44% 56%;
+    box-shadow: inset -6px -7px 0 #69a35e;
+}
+
+.foliage-1 {
+    width: 59px;
+    height: 53px;
+    left: 5px;
+    bottom: 75px;
+}
+
+.foliage-2 {
+    width: 62px;
+    height: 57px;
+    right: 4px;
+    bottom: 73px;
+}
+
+.foliage-3 {
+    width: 65px;
+    height: 63px;
+    left: 28px;
+    bottom: 101px;
+    background: #91c67a;
+}
+
+.foliage-4 {
+    width: 70px;
+    height: 56px;
+    left: 15px;
+    bottom: 65px;
+    background: #77af69;
+}
+
+.foliage-5 {
+    width: 63px;
+    height: 56px;
+    right: 10px;
+    bottom: 65px;
+    background: #8cc27a;
+}
+
+/* Stage 3 แสดงพุ่มเล็ก */
+.plant-art.type-tree.stage-3 .tree-details {
+    transform: scale(0.73);
+    transform-origin: 50% 90%;
+}
+
+/* Stage 4 แสดงพุ่มเต็มขนาด */
+.plant-art.type-tree.stage-4 .tree-details {
+    transform: scale(1);
+}
+
+/* แสดงส่วนลำต้นให้พ้นพุ่ม */
+.plant-art.type-tree.stage-3 .plant-crown,
+.plant-art.type-tree.stage-4 .plant-crown {
+    display: none;
+}
+
+/* ==========================================
+   2. BLOOMING FLOWER
+   ========================================== */
+
+.flower-head {
+    position: absolute;
+    z-index: 5;
+    width: 92px;
+    height: 92px;
+    left: 14px;
+    bottom: 55px;
+    pointer-events: none;
+}
+
+.flower-petal {
+    position: absolute;
+    left: 32px;
+    top: 5px;
+    width: 28px;
+    height: 42px;
+    background: #f8c4b1;
+    border: 2px solid #e9a99b;
+    border-radius: 60% 60% 40% 40%;
+    transform-origin: 14px 41px;
+    box-shadow: inset 4px 3px 0 #ffddd0;
+}
+
+.petal-1 {
+    transform: rotate(0deg);
+}
+
+.petal-2 {
+    transform: rotate(45deg);
+}
+
+.petal-3 {
+    transform: rotate(90deg);
+}
+
+.petal-4 {
+    transform: rotate(135deg);
+}
+
+.petal-5 {
+    transform: rotate(180deg);
+}
+
+.petal-6 {
+    transform: rotate(225deg);
+}
+
+.petal-7 {
+    transform: rotate(270deg);
+}
+
+.petal-8 {
+    transform: rotate(315deg);
+}
+
+.flower-center {
+    position: absolute;
+    z-index: 6;
+    left: 30px;
+    top: 29px;
+    width: 32px;
+    height: 32px;
+    border: 4px solid #d6a04f;
+    border-radius: 50%;
+    background: #f6d47b;
+    box-shadow: inset 3px 3px 0 #ffe5a1;
+}
+
+/* ซ่อนดอกแบบเก่าของ STEP 16 */
+.plant-art.type-flower .plant-bloom {
+    display: none !important;
+}
+
+/* Stage 3 ดอกยังเล็ก */
+.plant-art.type-flower.stage-3 .flower-head {
+    transform: scale(0.7);
+    transform-origin: 50% 80%;
+}
+
+/* Stage 4 ดอกบานเต็มที่ */
+.plant-art.type-flower.stage-4 .flower-head {
+    transform: scale(1);
+}
+
+/* ==========================================
+   3. LITTLE FERN
+   ========================================== */
+
+.fern-details {
+    position: absolute;
+    inset: 0;
+    z-index: 4;
+    pointer-events: none;
+}
+
+.fern-frond {
+    position: absolute;
+    bottom: 22px;
+    left: 48px;
+    width: 23px;
+    height: 82px;
+    background:
+        repeating-linear-gradient(to bottom,
+            #85bf8d 0 9px,
+            #4f956d 9px 12px);
+    border: 2px solid #4c8a64;
+    border-radius: 80% 10% 70% 10%;
+    transform-origin: bottom center;
+    box-shadow: inset -4px 0 0 #61a678;
+}
+
+.fern-vein {
+    position: absolute;
+    left: 48%;
+    top: 8px;
+    width: 2px;
+    height: 70%;
+    background: #c0dfb2;
+    border-radius: 3px;
+}
+
+.frond-1 {
+    transform: rotate(-65deg);
+}
+
+.frond-2 {
+    transform: rotate(-42deg);
+}
+
+.frond-3 {
+    transform: rotate(-18deg);
+}
+
+.frond-4 {
+    transform: rotate(18deg) scaleX(-1);
+}
+
+.frond-5 {
+    transform: rotate(42deg) scaleX(-1);
+}
+
+.frond-6 {
+    transform: rotate(65deg) scaleX(-1);
+}
+
+/* ป้องกันใบแบบเก่าทับรายละเอียดใหม่ */
+.plant-art.type-fern.stage-3 .plant-leaf,
+.plant-art.type-fern.stage-4 .plant-leaf {
+    display: none;
+}
+
+.plant-art.type-fern.stage-3 .fern-details {
+    transform: scale(0.7);
+    transform-origin: 50% 95%;
+}
+
+.plant-art.type-fern.stage-4 .fern-details {
+    transform: scale(1);
+}
+
+/* ==========================================
+   GROWTH STAGE VISIBILITY
+   ========================================== */
+
+/* เมล็ดยังไม่มีรายละเอียดต้นไม้ */
+.plant-art.stage-1 .tree-details,
+.plant-art.stage-1 .flower-head,
+.plant-art.stage-1 .fern-details {
+    display: none;
+}
+
+/* ต้นอ่อนใช้ใบแบบ STEP 16 */
+.plant-art.stage-2 .tree-details,
+.plant-art.stage-2 .flower-head,
+.plant-art.stage-2 .fern-details {
+    display: none;
+}
+
+/* ดอกไม้ช่วง Growing/Mature มีหัวดอก */
+.plant-art.type-flower.stage-3 .flower-head,
+.plant-art.type-flower.stage-4 .flower-head {
+    display: block;
+}
+
+/* ==========================================
+   GARDEN DETAILS & ANIMATION
+   ========================================== */
+
+.garden-scene .garden-plot--2d:nth-child(even) .plant-art {
+    animation-delay: -1.6s;
+}
+
+.garden-scene .garden-plot--2d:nth-child(3n) .plant-art {
+    animation-duration: 5s;
+}
+
+/* จุดตกแต่งบนพื้นเหมือนดอกหญ้า */
+.garden-plot--2d::after {
+    content: "✿  ✦  ✿";
+    position: absolute;
+    bottom: 47px;
+    left: 50%;
+    transform: translateX(-50%);
+    white-space: nowrap;
+    font-size: 13px;
+    letter-spacing: 8px;
+    color: #f8eee0;
+    opacity: 0.85;
+    pointer-events: none;
+}
+
+@media (prefers-reduced-motion: reduce) {
+    .plant-art {
+        animation: none !important;
+    }
+}
+
+/* STEP 18.1 — DRAG AND DROP */
+
+.decor-inventory-item {
+    cursor: grab;
+    user-select: none;
+    transition:
+        transform 0.2s ease,
+        opacity 0.2s ease,
+        border-color 0.2s ease;
+}
+
+.decor-inventory-item:active {
+    cursor: grabbing;
+}
+
+.decor-inventory-item.is-dragging {
+    opacity: 0.45;
+    transform: scale(0.95);
+}
+
+.decoration-slot {
+    transition:
+        background 0.2s ease,
+        border-color 0.2s ease,
+        transform 0.2s ease;
+}
+
+.decoration-slot.drag-over {
+    background: #d4edcd;
+    border: 2px solid #4d9660;
+    transform: scale(1.05);
+    box-shadow: 0 0 0 5px #8cbd8f30;
+}
+
+.decoration-slot.drag-over .decoration-slot-icon {
+    color: #3f8a53;
+    transform: scale(1.2);
+}
+
+.decoration-slot.occupied {
+    cursor: pointer;
+}
+
+/* ======================================
+   AFTERGLOW 2.0 — STEP 18.2
+   FREE PLACEMENT GARDEN
+   ====================================== */
+
+/* ซ่อนพื้นที่ 8 ช่องแบบเก่า
+   ข้อมูลยังอยู่ใน MongoDB ไม่ได้ถูกลบ */
+.decoration-section {
+    display: none;
+}
+
+/* ให้ของตกแต่งสามารถลอยบนฉากสวน */
+.garden-scene {
+    position: relative;
+    isolation: isolate;
+}
+
+.free-decor-layer {
+    position: absolute;
+    inset: 0;
+    z-index: 10;
+    pointer-events: none;
+}
+
+/* ไอเทมที่วางในสวน */
+.free-placed-item {
+    position: absolute;
+    transform: translate(-50%, -75%);
+
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+
+    pointer-events: auto;
+    user-select: none;
+}
+
+.free-placed-art {
+    display: grid;
+    place-items: center;
+
+    width: 65px;
+    height: 65px;
+
+    padding: 0;
+    border: 2px solid transparent;
+    border-radius: 18px;
+
+    background: #ffffff35;
+    font-size: 44px;
+
+    cursor: grab;
+    transition: transform 0.2s;
+}
+
+.free-placed-art:hover {
+    transform: scale(1.15);
+}
+
+.free-placed-art:active {
+    cursor: grabbing;
+}
+
+.free-placed-item.selected .free-placed-art {
+    border-color: #ffffff;
+    background: #ffffff88;
+    box-shadow: 0 0 0 4px #528a6260;
+}
+
+.free-placed-label {
+    max-width: 105px;
+    padding: 4px 8px;
+    border-radius: 20px;
+
+    background: #ffffffd9;
+    color: #3d6846;
+
+    font-size: 10px;
+    font-weight: 700;
+    text-align: center;
+
+    overflow-wrap: anywhere;
+}
+
+/* ปุ่มเก็บคืน */
+.free-placed-remove {
+    position: absolute;
+    top: -8px;
+    right: -8px;
+
+    width: 23px;
+    height: 23px;
+
+    border: none;
+    border-radius: 50%;
+
+    background: #fff;
+    color: #b05b58;
+    box-shadow: 0 2px 7px #294a3720;
+
+    font-size: 18px;
+    line-height: 1;
+    cursor: pointer;
+}
+
+.free-placed-remove:hover {
+    background: #fae7e7;
+}
+
+/* เอฟเฟกต์เมื่อลากไอเทมลงสวน */
+.garden-scene.free-drop-target {
+    outline: 4px dashed #72a67a;
+    outline-offset: -8px;
+}
+
+/* แถบ Inventory ใหม่ */
+.free-garden-toolbar {
+    background: #f8faf5;
+    border: 1px solid #d5e4ce;
+    border-radius: 17px;
+
+    padding: 20px;
+    margin-top: 20px;
+}
+
+.free-garden-toolbar h3 {
+    color: #294a37;
+    margin: 0 0 7px;
+    font-size: 18px;
+}
+
+.free-garden-toolbar>p {
+    color: #718b75;
+    font-size: 12px;
+    line-height: 1.7;
+}
+
+/* รายการของที่ลากได้ */
+.free-garden-inventory {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 11px;
+    margin-top: 17px;
+}
+
+.free-inventory-item {
+    display: flex;
+    align-items: center;
+    gap: 9px;
+
+    min-height: 53px;
+    padding: 9px 13px;
+
+    background: #fff;
+    border: 2px solid #d9e6d4;
+    border-radius: 13px;
+
+    color: #385e42;
+    font: inherit;
+    font-size: 12px;
+
+    cursor: grab;
+    transition: background 0.2s, transform 0.2s;
+}
+
+.free-inventory-item:hover:not(:disabled) {
+    background: #e8f3e4;
+    transform: translateY(-2px);
+}
+
+.free-inventory-item.selected {
+    background: #e2f0df;
+    border-color: #6a9b73;
+}
+
+.free-inventory-item:disabled {
+    opacity: 0.6;
+    cursor: wait;
+}
+
+.free-inventory-icon {
+    font-size: 25px;
+}
+
+.free-inventory-item strong {
+    color: #63866a;
+}
+
+.free-garden-message {
+    min-height: 20px;
+    margin-bottom: 0;
+    font-size: 12px;
+}
+
+@media (max-width: 650px) {
+    .free-placed-art {
+        width: 45px;
+        height: 45px;
+        font-size: 32px;
+    }
+
+    .free-placed-label {
+        max-width: 75px;
+        font-size: 9px;
+    }
+
+    .free-placed-remove {
+        width: 20px;
+        height: 20px;
+    }
+
+    .free-garden-toolbar {
+        padding: 15px;
+    }
+}
+
+/* ======================================
+   AFTERGLOW GARDEN 2.0 — STEP 19
+   GARDEN ANIMATION & ATMOSPHERE
+   ====================================== */
+
+/* ชั้นเอฟเฟกต์ */
+.garden-atmosphere {
+    position: absolute;
+    inset: 0;
+    z-index: 5;
+    overflow: hidden;
+    pointer-events: none;
+    border-radius: inherit;
+}
+
+.garden-atmosphere>span {
+    position: absolute;
+    display: block;
+}
+
+/* ======================================
+   1. SUNLIGHT
+   ====================================== */
+
+.atmosphere-sun {
+    width: 110px;
+    height: 110px;
+    top: -24px;
+    right: 12%;
+
+    border-radius: 50%;
+
+    background:
+        radial-gradient(circle,
+            #fff7c9 0%,
+            #ffe7a8 42%,
+            #fff1b56b 67%,
+            transparent 72%);
+
+    box-shadow:
+        0 0 45px 22px #fff3bd50,
+        0 0 90px 50px #fff4cc30;
+
+    animation: sunlight-glow 5s ease-in-out infinite;
+}
+
+@keyframes sunlight-glow {
+
+    0%,
+    100% {
+        opacity: 0.72;
+        transform: scale(1);
+    }
+
+    50% {
+        opacity: 1;
+        transform: scale(1.12);
+    }
+}
+
+/* ======================================
+   2. MOVING CLOUDS
+   ====================================== */
+
+.atmosphere-cloud {
+    top: var(--cloud-y);
+    left: -180px;
+    width: 120px;
+    height: 38px;
+
+    border-radius: 50px;
+    background: #ffffffb5;
+
+    filter: blur(1px);
+
+    animation: cloud-drift var(--cloud-duration) linear var(--cloud-delay) infinite;
+}
+
+.atmosphere-cloud::before,
+.atmosphere-cloud::after {
+    content: "";
+    position: absolute;
+    background: #ffffffc9;
+    border-radius: 50%;
+}
+
+.atmosphere-cloud::before {
+    width: 58px;
+    height: 54px;
+    left: 18px;
+    bottom: 10px;
+}
+
+.atmosphere-cloud::after {
+    width: 70px;
+    height: 59px;
+    left: 49px;
+    bottom: 0;
+}
+
+@keyframes cloud-drift {
+    from {
+        left: -180px;
+    }
+
+    to {
+        left: calc(100% + 180px);
+    }
+}
+
+/* ======================================
+   3. FLYING BUTTERFLIES
+   ====================================== */
+
+.atmosphere-butterfly {
+    left: var(--butterfly-x);
+    top: var(--butterfly-y);
+
+    font-size: 23px;
+
+    animation: butterfly-fly var(--butterfly-duration) ease-in-out var(--butterfly-delay) infinite alternate;
+}
+
+.butterfly-wings {
+    display: block;
+
+    animation: butterfly-flutter 0.65s ease-in-out infinite alternate;
+}
+
+@keyframes butterfly-fly {
+    0% {
+        transform: translate(0, 0) rotate(-8deg);
+    }
+
+    25% {
+        transform: translate(32px, -25px) rotate(8deg);
+    }
+
+    50% {
+        transform: translate(70px, 8px) rotate(-5deg);
+    }
+
+    75% {
+        transform: translate(45px, -30px) rotate(9deg);
+    }
+
+    100% {
+        transform: translate(95px, -5px) rotate(-8deg);
+    }
+}
+
+@keyframes butterfly-flutter {
+    from {
+        transform: scaleX(0.75) rotate(-8deg);
+    }
+
+    to {
+        transform: scaleX(1.12) rotate(8deg);
+    }
+}
+
+/* ======================================
+   4. FLOATING LEAVES
+   ====================================== */
+
+.atmosphere-leaf {
+    left: var(--leaf-x);
+    top: var(--leaf-y);
+
+    width: 13px;
+    height: 8px;
+
+    border-radius: 90% 10% 85% 15%;
+    background: #78ad69b5;
+
+    animation: leaf-floating var(--leaf-duration) ease-in-out var(--leaf-delay) infinite alternate;
+}
+
+@keyframes leaf-floating {
+    0% {
+        opacity: 0;
+        transform: translate(0, -15px) rotate(0deg);
+    }
+
+    25% {
+        opacity: 0.7;
+    }
+
+    75% {
+        opacity: 0.6;
+    }
+
+    100% {
+        opacity: 0;
+        transform: translate(75px, 45px) rotate(230deg);
+    }
+}
+
+/* ======================================
+   5. SPARKLES
+   ====================================== */
+
+.atmosphere-sparkle {
+    left: var(--sparkle-x);
+    top: var(--sparkle-y);
+
+    width: 6px;
+    height: 6px;
+
+    border-radius: 50%;
+    background: #fff9c8;
+
+    box-shadow:
+        0 0 8px 3px #fff5be8c;
+
+    animation: sparkle-pulse 3.2s ease-in-out var(--sparkle-delay) infinite;
+}
+
+@keyframes sparkle-pulse {
+
+    0%,
+    100% {
+        opacity: 0;
+        transform: scale(0.4);
+    }
+
+    50% {
+        opacity: 0.95;
+        transform: scale(1.5);
+    }
+}
+
+/* ======================================
+   ANIMATION CONTROLS
+   ====================================== */
+
+.garden-atmosphere-controls {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    flex-wrap: wrap;
+    gap: 12px;
+
+    margin-top: 12px;
+    padding: 11px 15px;
+
+    background: #f6faf2;
+    border: 1px solid #dce9d5;
+    border-radius: 12px;
+}
+
+.garden-atmosphere-status {
+    font-size: 12px;
+    font-weight: 600;
+    color: #65836a;
+}
+
+.garden-atmosphere-toggle {
+    padding: 9px 14px;
+
+    background: #557a5c;
+    color: #ffffff;
+    border: none;
+    border-radius: 9px;
+
+    font: inherit;
+    font-size: 12px;
+    font-weight: 600;
+    cursor: pointer;
+}
+
+.garden-atmosphere-toggle:hover {
+    background: #416b49;
+}
+
+/* ======================================
+   PAUSE ANIMATION
+   ====================================== */
+
+.garden-scene.atmosphere-paused .garden-atmosphere *,
+.garden-scene.atmosphere-paused .plant-art {
+    animation-play-state: paused !important;
+}
+
+/* ผู้ใช้ตั้งค่าลดภาพเคลื่อนไหว */
+@media (prefers-reduced-motion: reduce) {
+
+    .garden-atmosphere *,
+    .garden-scene .plant-art {
+        animation: none !important;
+    }
+}
+
+/* ======================================
+   RESPONSIVE
+   ====================================== */
+
+@media (max-width: 650px) {
+    .atmosphere-sun {
+        width: 80px;
+        height: 80px;
+    }
+
+    .atmosphere-butterfly {
+        font-size: 18px;
+    }
+
+    .garden-atmosphere-controls {
+        align-items: flex-start;
+    }
+}
+
+/* ==========================================
+   AFTERGLOW GARDEN 2.0
+   STEP 19.1 — GARDEN VISUAL POLISH
+   ========================================== */
+
+/* 1. ปรับขนาดต้นไม้ตาม Growth Stage */
+
+/* Stage 1 — เมล็ด */
+.garden-scene .plant-art.stage-1 {
+    scale: 0.55;
+}
+
+/* Stage 2 — ต้นอ่อน */
+.garden-scene .plant-art.stage-2 {
+    scale: 0.72;
+}
+
+/* Stage 3 — กำลังเติบโต */
+.garden-scene .plant-art.stage-3 {
+    scale: 0.95;
+}
+
+/* Stage 4 — โตเต็มวัย */
+.garden-scene .plant-art.stage-4 {
+    scale: 1.15;
+}
+
+/* ขยายจากฐานต้นไม้ ไม่ให้ต้นไม้ลอย */
+.garden-scene .plant-art {
+    transform-origin: center bottom;
+}
+
+/* ให้ต้นไม้มีพื้นที่แสดงผลมากขึ้น */
+.garden-scene .garden-plot--2d {
+    min-height: 235px;
+    gap: 5px;
+}
+
+/* ปรับป้ายชื่อและข้อมูลต้นไม้ */
+.garden-scene .garden-scene-label {
+    font-size: 12px;
+    padding: 6px 12px;
+    box-shadow: 0 3px 9px #294a3714;
+}
+
+.garden-scene .garden-scene-stage {
+    font-size: 11px;
+    color: #3d6a46;
+}
+
+/* 2. ปรับของตกแต่งให้ดูเป็นระเบียบ */
+
+.free-placed-item {
+    z-index: 11;
+}
+
+/* เมื่อเลือกหรือชี้ จะอยู่ด้านหน้าชิ้นอื่น */
+.free-placed-item:hover,
+.free-placed-item:focus-within,
+.free-placed-item.selected {
+    z-index: 30;
+}
+
+/* ป้ายชื่อซ่อนไว้ก่อน */
+.free-placed-label {
+    opacity: 0;
+    visibility: hidden;
+
+    transform: translateY(5px);
+
+    transition:
+        opacity 0.2s ease,
+        transform 0.2s ease,
+        visibility 0.2s ease;
+
+    white-space: nowrap;
+    max-width: 140px;
+}
+
+/* แสดงชื่อเมื่อชี้หรือเลือกไอเทม */
+.free-placed-item:hover .free-placed-label,
+.free-placed-item:focus-within .free-placed-label,
+.free-placed-item.selected .free-placed-label {
+    opacity: 1;
+    visibility: visible;
+    transform: translateY(0);
+}
+
+/* ปรับพื้นหลังไอเทมให้กลมกลืนกับสวน */
+.free-placed-art {
+    background: transparent;
+    border-radius: 14px;
+    filter: drop-shadow(0 5px 4px #294a3725);
+}
+
+/* แสดงกรอบเมื่อต้องการย้าย */
+.free-placed-item.selected .free-placed-art {
+    background: #ffffff70;
+    border-color: #ffffff;
+}
+
+/* ซ่อนปุ่มเก็บคืนเมื่อไม่ได้เลือก */
+.free-placed-remove {
+    opacity: 0;
+    visibility: hidden;
+    transition: opacity 0.2s ease;
+}
+
+/* ปรากฏเมื่อชี้หรือเลือกไอเทม */
+.free-placed-item:hover .free-placed-remove,
+.free-placed-item:focus-within .free-placed-remove,
+.free-placed-item.selected .free-placed-remove {
+    opacity: 1;
+    visibility: visible;
+}
+
+/* 3. ผีเสื้อ Animation ให้ต่างจากของตกแต่ง */
+
+.atmosphere-butterfly {
+    font-size: 16px;
+    opacity: 0.55;
+    filter: saturate(0.65);
+}
+
+/* ของตกแต่งที่ซื้อยังแสดงเด่นเหมือนเดิม */
+.free-placed-art {
+    opacity: 1;
+}
+
+/* 4. ปรับความนุ่มนวลของแสง */
+
+.atmosphere-sun {
+    opacity: 0.8;
+}
+
+.atmosphere-sparkle {
+    opacity: 0.65;
+}
+
+/* 5. ปรับการแสดงผลบนมือถือ */
+
+@media (max-width: 650px) {
+    .garden-scene .garden-plot--2d {
+        min-height: 215px;
+    }
+
+    .garden-scene .plant-art.stage-4 {
+        scale: 0.95;
+    }
+
+    .free-placed-label {
+        max-width: 100px;
+        font-size: 9px;
+    }
+}
+
+/* อุปกรณ์แบบสัมผัสไม่มี Hover ที่แน่นอน
+   จึงให้ปุ่มเก็บคืนแสดงตลอด */
+@media (hover: none) {
+    .free-placed-remove {
+        opacity: 1;
+        visibility: visible;
+    }
+}
+
+/* ======================================
+   AFTERGLOW GARDEN 2.0 — STEP 20.1
+   DASHBOARD UI UPGRADE
+   ====================================== */
+
+.dashboard-v2 {
+    display: flex;
+    flex-direction: column;
+    gap: 22px;
+    margin: 22px 0 30px;
+}
+
+/* WELCOME BANNER */
+
+.dashboard-v2-hero {
+    position: relative;
+    overflow: hidden;
+    display: grid;
+    grid-template-columns: 1.4fr 1fr;
+    min-height: 255px;
+    border-radius: 24px;
+    background:
+        linear-gradient(120deg, #e2eed9, #f3f5df);
+}
+
+.dashboard-v2-hero-text {
+    position: relative;
+    z-index: 2;
+    padding: 34px;
+    display: flex;
+    flex-direction: column;
+    align-items: flex-start;
+    justify-content: center;
+}
+
+.dashboard-v2-eyebrow {
+    color: #729276;
+    font-size: 10px;
+    letter-spacing: 2px;
+    font-weight: 700;
+}
+
+.dashboard-v2-hero-text h2 {
+    color: #294a37;
+    font-size: clamp(24px, 3vw, 34px);
+    line-height: 1.3;
+    margin: 12px 0;
+}
+
+.dashboard-v2-greeting {
+    max-width: 440px;
+    color: #68816a;
+    font-size: 13px;
+    line-height: 1.8;
+}
+
+.dashboard-v2-hero-actions {
+    display: flex;
+    gap: 10px;
+    flex-wrap: wrap;
+    margin-top: 15px;
+}
+
+.dashboard-v2-button {
+    display: inline-block;
+    padding: 12px 17px;
+    border-radius: 12px;
+    background: #456f4f;
+    color: white;
+    font-size: 12px;
+    font-weight: 700;
+    text-decoration: none;
+}
+
+.dashboard-v2-button:hover {
+    background: #315c3b;
+}
+
+.dashboard-v2-button.secondary {
+    background: #ffffffc7;
+    color: #345e3d;
+}
+
+.dashboard-v2-button.secondary:hover {
+    background: white;
+}
+
+/* 2D TREE ILLUSTRATION */
+
+.dashboard-v2-artwork {
+    position: relative;
+    min-height: 255px;
+    overflow: hidden;
+    background:
+        radial-gradient(ellipse at 60% 25%,
+            #ffffff8a,
+            transparent 35%),
+        linear-gradient(180deg,
+            #e1f2ed,
+            #bddba9);
+}
+
+.dashboard-v2-sun {
+    position: absolute;
+    width: 75px;
+    height: 75px;
+    top: 24px;
+    right: 50px;
+    border-radius: 50%;
+    background: #ffe9a7;
+    box-shadow: 0 0 50px #fff2bd;
+}
+
+.dashboard-v2-ground {
+    position: absolute;
+    left: -20%;
+    right: -20%;
+    bottom: -65px;
+    height: 140px;
+    border-radius: 50% 50% 0 0;
+    background: #9cc68a;
+}
+
+.dashboard-v2-tree {
+    position: absolute;
+    bottom: 37px;
+    left: 50%;
+    width: 160px;
+    height: 180px;
+    transform: translateX(-50%);
+    transform-origin: bottom center;
+    animation: dashboard-tree-sway 5s ease-in-out infinite;
+}
+
+.dashboard-v2-trunk {
+    position: absolute;
+    left: 73px;
+    bottom: 0;
+    width: 21px;
+    height: 110px;
+    border: 3px solid #875d41;
+    border-radius: 12px;
+    background: #a97c54;
+}
+
+.dashboard-v2-crown {
+    position: absolute;
+    border-radius: 50%;
+    border: 4px solid #62985b;
+    background: #87bb76;
+    box-shadow: inset -9px -9px 0 #70a963;
+}
+
+.dashboard-v2-crown.crown-one {
+    width: 105px;
+    height: 95px;
+    left: 5px;
+    top: 28px;
+}
+
+.dashboard-v2-crown.crown-two {
+    width: 105px;
+    height: 95px;
+    right: 0;
+    top: 25px;
+}
+
+.dashboard-v2-crown.crown-three {
+    width: 112px;
+    height: 103px;
+    left: 26px;
+    top: 0;
+    background: #98c988;
+}
+
+@keyframes dashboard-tree-sway {
+
+    0%,
+    100% {
+        rotate: -2deg;
+    }
+
+    50% {
+        rotate: 2deg;
+    }
+}
+
+/* LEVEL PROGRESS */
+
+.dashboard-v2-level-card {
+    border-radius: 20px;
+    padding: 25px;
+    border: 1px solid #dce7d6;
+    background: #ffffff;
+}
+
+.dashboard-v2-level-top {
+    display: flex;
+    justify-content: space-between;
+    align-items: end;
+    gap: 14px;
+}
+
+.dashboard-v2-level-top h3 {
+    color: #294a37;
+    font-size: 25px;
+    margin: 10px 0 0;
+}
+
+.dashboard-v2-xp {
+    color: #638b67;
+    font-size: 14px;
+}
+
+.dashboard-v2-progress-track {
+    height: 15px;
+    width: 100%;
+    overflow: hidden;
+    background: #e5eee0;
+    border-radius: 30px;
+    margin-top: 21px;
+}
+
+.dashboard-v2-progress-fill {
+    width: 0;
+    height: 100%;
+    border-radius: 30px;
+    background:
+        linear-gradient(90deg, #90be8e, #487e57);
+    transition: width 0.5s ease;
+}
+
+.dashboard-v2-level-hint {
+    color: #819984;
+    font-size: 12px;
+    margin: 11px 0 0;
+}
+
+/* QUICK ACTIONS */
+
+.dashboard-v2-quick-section h3,
+.dashboard-v2-weekly-head h3 {
+    color: #294a37;
+    font-size: 21px;
+    margin: 0 0 17px;
+}
+
+.dashboard-v2-quick-grid {
+    display: grid;
+    grid-template-columns: repeat(4, minmax(0, 1fr));
+    gap: 14px;
+}
+
+.dashboard-v2-quick-card {
+    display: flex;
+    flex-direction: column;
+    align-items: flex-start;
+    gap: 10px;
+    min-width: 0;
+    padding: 21px;
+    background: #fff;
+    border: 1px solid #dde9d8;
+    border-radius: 18px;
+    text-decoration: none;
+    transition: transform 0.2s, box-shadow 0.2s;
+}
+
+.dashboard-v2-quick-card:hover {
+    transform: translateY(-4px);
+    box-shadow: 0 12px 25px #294a3712;
+}
+
+.dashboard-v2-quick-icon {
+    display: grid;
+    place-items: center;
+    width: 47px;
+    height: 47px;
+    background: #eaf2e4;
+    border-radius: 13px;
+    font-size: 25px;
+}
+
+.dashboard-v2-quick-card strong {
+    color: #294a37;
+    font-size: 14px;
+}
+
+.dashboard-v2-quick-card small {
+    color: #829785;
+    font-size: 11px;
+    line-height: 1.6;
+}
+
+/* WEEKLY ACTIVITY */
+
+.dashboard-v2-weekly-section {
+    padding: 25px;
+    background: #fff;
+    border: 1px solid #dde9d8;
+    border-radius: 20px;
+}
+
+.dashboard-v2-weekly-head {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    gap: 14px;
+}
+
+.dashboard-v2-weekly-head h3 {
+    margin: 0 0 7px;
+}
+
+.dashboard-v2-weekly-head p {
+    color: #859886;
+    font-size: 12px;
+    margin: 0;
+}
+
+.dashboard-v2-weekly-link {
+    color: #557d5c;
+    font-size: 12px;
+    font-weight: 700;
+    text-decoration: none;
+}
+
+.dashboard-v2-weekly-chart {
+    display: grid;
+    grid-template-columns: repeat(7, minmax(0, 1fr));
+    gap: 14px;
+    height: 190px;
+    margin-top: 25px;
+}
+
+.dashboard-v2-weekly-column {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 9px;
+    min-width: 0;
+}
+
+.dashboard-v2-weekly-count {
+    color: #5d8264;
+    font-size: 12px;
+    font-weight: 700;
+}
+
+.dashboard-v2-weekly-bar-area {
+    flex: 1;
+    width: min(100%, 40px);
+    position: relative;
+    overflow: hidden;
+    border-radius: 11px;
+    background: #eef3eb;
+}
+
+.dashboard-v2-weekly-bar {
+    position: absolute;
+    bottom: 0;
+    width: 100%;
+    background:
+        linear-gradient(#a4c99d, #5c9267);
+    border-radius: 11px;
+    transition: height 0.3s ease;
+}
+
+.dashboard-v2-weekly-day {
+    color: #819984;
+    font-size: 11px;
+    font-weight: 600;
+}
+
+/* RESPONSIVE */
+
+@media (max-width: 1000px) {
+    .dashboard-v2-quick-grid {
+        grid-template-columns: repeat(2, minmax(0, 1fr));
+    }
+}
+
+@media (max-width: 700px) {
+    .dashboard-v2-hero {
+        grid-template-columns: 1fr;
+    }
+
+    .dashboard-v2-artwork {
+        min-height: 190px;
+    }
+
+    .dashboard-v2-hero-text {
+        padding: 25px;
+    }
+
+    .dashboard-v2-quick-grid {
+        grid-template-columns: repeat(2, minmax(0, 1fr));
+    }
+
+    .dashboard-v2-level-top {
+        align-items: flex-start;
+        flex-direction: column;
+    }
+
+    .dashboard-v2-weekly-chart {
+        gap: 6px;
+    }
+
+    .dashboard-v2-weekly-section {
+        padding: 17px;
+    }
+}
+
+@media (max-width: 390px) {
+    .dashboard-v2-quick-grid {
+        grid-template-columns: 1fr;
+    }
+}
+
+@media (prefers-reduced-motion: reduce) {
+    .dashboard-v2-tree {
+        animation: none;
+    }
+}
+
+/* ============================================
+   AFTERGLOW GARDEN 2.0
+   STEP 20.2 — HABITS UI & CELEBRATION
+   ============================================ */
+
+/* HEADER */
+
+.habits-header {
+    background:
+        radial-gradient(circle at 90% 20%,
+            #e0edce 0 12%,
+            transparent 35%),
+        #eef5e9;
+
+    padding: 28px;
+    border-radius: 22px;
+}
+
+.habits-header h1 {
+    font-size: clamp(27px, 3vw, 38px);
+}
+
+.add-habit-btn {
+    border-radius: 13px;
+    box-shadow: 0 5px 14px #294a3715;
+}
+
+/* DAILY PROGRESS */
+
+.habits-v2-progress {
+    margin: 0 0 30px;
+    padding: 25px;
+    border-radius: 20px;
+    background: white;
+    border: 1px solid #dce8d7;
+}
+
+.habits-v2-progress-heading {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    gap: 15px;
+}
+
+.habits-v2-eyebrow {
+    color: #86a289;
+    letter-spacing: 1.5px;
+    font-size: 10px;
+    font-weight: 700;
+}
+
+.habits-v2-progress h2 {
+    font-size: 24px;
+    color: #294a37;
+    margin: 7px 0;
+}
+
+.habits-v2-progress-heading p {
+    color: #849887;
+    font-size: 12px;
+}
+
+.habits-v2-percent {
+    font-size: 32px;
+    color: #4b7d55;
+}
+
+.habits-v2-progress-track {
+    height: 16px;
+    overflow: hidden;
+    border-radius: 30px;
+    background: #e8f0e4;
+    margin-top: 20px;
+}
+
+.habits-v2-progress-fill {
+    width: 0%;
+    height: 100%;
+    border-radius: 30px;
+    background: linear-gradient(90deg,
+            #a5cb9e,
+            #548c61);
+    transition: width 0.5s ease;
+}
+
+.habits-v2-progress-footer {
+    display: flex;
+    justify-content: space-between;
+    gap: 12px;
+    flex-wrap: wrap;
+    margin-top: 13px;
+    color: #78927c;
+    font-size: 12px;
+}
+
+/* HABIT CARDS */
+
+.habit-card {
+    position: relative;
+    overflow: hidden;
+    border: 1px solid #dce9d6;
+    box-shadow: 0 6px 20px #294a3708;
+}
+
+.habit-card::before {
+    content: "";
+    position: absolute;
+    top: 0;
+    left: 0;
+    bottom: 0;
+    width: 5px;
+    background: #95b99a;
+}
+
+.habit-card:nth-child(5n+2)::before {
+    background: #d9b66f;
+}
+
+.habit-card:nth-child(5n+3)::before {
+    background: #a8c3d9;
+}
+
+.habit-card:nth-child(5n+4)::before {
+    background: #e5afa9;
+}
+
+.habit-card:nth-child(5n+5)::before {
+    background: #b7a7d8;
+}
+
+.habit-card-v2-done {
+    background: linear-gradient(135deg,
+            #f4faf0,
+            #ffffff);
+    border-color: #b7d7b4;
+}
+
+.habit-card-v2-done::before {
+    background: #548c61 !important;
+}
+
+.habit-card-v2-done .habit-icon {
+    background: #dcefd8;
+}
+
+.complete-habit-btn {
+    transition:
+        transform 0.2s,
+        background 0.2s,
+        box-shadow 0.2s;
+}
+
+.complete-habit-btn:hover:not(:disabled) {
+    transform: translateY(-3px);
+    box-shadow: 0 7px 18px #426b4930;
+}
+
+.complete-habit-btn.already-done {
+    background: #ddefd9;
+    color: #3a7949;
+}
+
+/* CELEBRATION OVERLAY */
+
+.habits-v2-celebration {
+    position: fixed;
+    inset: 0;
+    z-index: 3000;
+
+    display: flex;
+    align-items: center;
+    justify-content: center;
+
+    padding: 20px;
+    background: #182d1fc2;
+    overflow: hidden;
+}
+
+.habits-v2-celebration-panel {
+    position: relative;
+    z-index: 2;
+
+    width: 100%;
+    max-width: 430px;
+    padding: 35px 28px;
+
+    border-radius: 25px;
+    background: #fcfdf9;
+    text-align: center;
+
+    box-shadow: 0 20px 70px #11231950;
+    animation: habits-v2-pop 0.35s ease-out;
+}
+
+.habits-v2-trophy {
+    font-size: 65px;
+    margin-bottom: 10px;
+}
+
+.habits-v2-celebration-panel h2 {
+    color: #294a37;
+    font-size: 29px;
+    margin: 10px 0;
+}
+
+.habits-v2-celebration-panel p {
+    color: #748a78;
+    font-size: 14px;
+    line-height: 1.7;
+}
+
+.habits-v2-celebration-panel strong {
+    display: block;
+    margin-top: 20px;
+    color: #ae8848;
+    font-size: 18px;
+}
+
+.habits-v2-celebration-close {
+    width: 100%;
+    border: none;
+    border-radius: 12px;
+    padding: 14px;
+    margin-top: 25px;
+
+    background: #557a5c;
+    color: white;
+    font: inherit;
+    font-size: 14px;
+    font-weight: 700;
+    cursor: pointer;
+}
+
+.habits-v2-celebration-close:hover {
+    background: #3c6946;
+}
+
+.habits-v2-confetti {
+    position: absolute;
+    top: -30px;
+    width: 10px;
+    height: 16px;
+    border-radius: 3px;
+    pointer-events: none;
+
+    animation: habits-v2-fall linear forwards;
+}
+
+@keyframes habits-v2-pop {
+    from {
+        opacity: 0;
+        transform: scale(0.8) translateY(20px);
+    }
+
+    to {
+        opacity: 1;
+        transform: scale(1) translateY(0);
+    }
+}
+
+@keyframes habits-v2-fall {
+    from {
+        transform: translateY(-20px) rotate(0deg);
+        opacity: 1;
+    }
+
+    to {
+        transform: translateY(110vh) rotate(720deg);
+        opacity: 0;
+    }
+}
+
+/* RESPONSIVE */
+
+@media (max-width: 650px) {
+    .habits-header {
+        padding: 22px;
+    }
+
+    .habits-v2-progress {
+        padding: 19px;
+    }
+
+    .habits-v2-progress-heading {
+        align-items: flex-start;
+    }
+
+    .habits-v2-progress h2 {
+        font-size: 20px;
+    }
+
+    .habits-v2-percent {
+        font-size: 25px;
+    }
+
+    .habits-v2-celebration-panel {
+        padding: 28px 18px;
+    }
+}
+
+@media (prefers-reduced-motion: reduce) {
+
+    .habits-v2-celebration-panel,
+    .habits-v2-confetti {
+        animation: none !important;
+    }
+}
+
+/* ===========================================
+   AFTERGLOW GARDEN 2.0 — STEP 20.3
+   GARDEN SHOP UI UPGRADE
+   =========================================== */
+
+.shop-header {
+    background: linear-gradient(115deg,
+            #edf5e7,
+            #f8f3df);
+    border-radius: 22px;
+    padding: 28px;
+}
+
+.shop-header h1 {
+    font-size: clamp(27px, 3vw, 38px);
+}
+
+.shop-wallet {
+    border: 2px solid #d7e5c9;
+    box-shadow: 0 8px 22px #294a370d;
+    transition: transform 0.2s ease;
+}
+
+.shop-wallet:hover {
+    transform: translateY(-3px);
+}
+
+.shop-wallet strong {
+    color: #946d2e;
+}
+
+/* SHOP HERO */
+
+.shop-hero {
+    position: relative;
+    overflow: hidden;
+    min-height: 210px;
+    isolation: isolate;
+}
+
+.shop-hero> :not(.shop-v2-hero-decor) {
+    position: relative;
+    z-index: 2;
+}
+
+.shop-v2-hero-decor {
+    position: absolute;
+    inset: 0;
+    z-index: 1;
+    pointer-events: none;
+}
+
+.shop-v2-floating {
+    position: absolute;
+    display: block;
+    font-size: 38px;
+    animation: shop-v2-float 5s ease-in-out infinite;
+}
+
+.shop-v2-floating.deco-1 {
+    right: 8%;
+    bottom: 15%;
+}
+
+.shop-v2-floating.deco-2 {
+    right: 22%;
+    top: 10%;
+    animation-delay: -1.5s;
+}
+
+.shop-v2-floating.deco-3 {
+    right: 3%;
+    top: 15%;
+    animation-delay: -2.5s;
+}
+
+@keyframes shop-v2-float {
+
+    0%,
+    100% {
+        transform: translateY(0) rotate(-5deg);
+    }
+
+    50% {
+        transform: translateY(-12px) rotate(5deg);
+    }
+}
+
+/* PRODUCT CARDS */
+
+.shop-item-card {
+    position: relative;
+    overflow: hidden;
+    border: 1px solid #d9e7d3;
+    box-shadow: 0 6px 18px #294a3708;
+    transition:
+        transform 0.25s ease,
+        box-shadow 0.25s ease,
+        border-color 0.25s ease;
+}
+
+.shop-item-card:hover {
+    transform: translateY(-5px);
+    box-shadow: 0 15px 32px #294a3717;
+}
+
+.shop-item-art {
+    background:
+        radial-gradient(ellipse at 50% 85%,
+            #c0dba9 0 27%,
+            transparent 28%),
+        linear-gradient(180deg,
+            #eef6ea,
+            #dcebd3);
+    border: 1px solid #e0ecd8;
+    transition: transform 0.25s ease;
+}
+
+.shop-item-card:hover .shop-item-art {
+    transform: scale(1.025);
+}
+
+.shop-item-card h3 {
+    font-size: 19px;
+}
+
+.shop-item-price {
+    color: #9b7534;
+    font-weight: 800;
+}
+
+.shop-buy-btn {
+    border-radius: 12px;
+    transition:
+        background 0.2s ease,
+        transform 0.2s ease;
+}
+
+.shop-buy-btn:hover:not(:disabled) {
+    transform: translateY(-2px);
+}
+
+/* OWNED BADGE */
+
+.shop-v2-badge {
+    position: absolute;
+    top: 29px;
+    right: 28px;
+    padding: 8px 11px;
+    border-radius: 20px;
+    background: #ffffffee;
+    color: #477b51;
+    font-size: 11px;
+    font-weight: 800;
+    box-shadow: 0 3px 12px #294a371a;
+}
+
+.shop-v2-owned {
+    border-color: #a6cba2;
+}
+
+.shop-v2-unaffordable .shop-item-art {
+    filter: saturate(0.8);
+}
+
+/* COLLECTION SUMMARY */
+
+.shop-v2-collection {
+    display: flex;
+    align-items: center;
+    gap: 17px;
+    background: linear-gradient(110deg,
+            #e4efdc,
+            #f6f5e9);
+    border-radius: 18px;
+    padding: 22px;
+    margin: 30px 0 12px;
+}
+
+.shop-v2-collection-icon {
+    display: grid;
+    place-items: center;
+    flex-shrink: 0;
+    width: 64px;
+    height: 64px;
+    background: #ffffffc9;
+    border-radius: 16px;
+    font-size: 33px;
+}
+
+.shop-v2-collection-text h3 {
+    color: #294a37;
+    font-size: 19px;
+    margin: 0 0 7px;
+}
+
+.shop-v2-collection-text p {
+    color: #708b75;
+    font-size: 12px;
+    margin: 0;
+    line-height: 1.7;
+}
+
+/* INVENTORY */
+
+.inventory-v2-card {
+    border: 1px solid #cbdcc8;
+    background: #f9fcf7;
+    box-shadow: 0 4px 12px #294a3708;
+}
+
+.inventory-v2-card .inventory-icon {
+    background: #dcefd6;
+}
+
+.inventory-v2-card .inventory-quantity {
+    padding: 5px 9px;
+    border-radius: 10px;
+    background: #e0eedb;
+}
+
+/* PURCHASE CELEBRATION */
+
+.shop-v2-celebration {
+    position: fixed;
+    inset: 0;
+    z-index: 3100;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    padding: 20px;
+    background: #182d1fc9;
+}
+
+.shop-v2-celebration-panel {
+    width: 100%;
+    max-width: 430px;
+    padding: 36px 27px;
+    border-radius: 25px;
+    background: #fcfdf9;
+    text-align: center;
+    box-shadow: 0 20px 65px #11231950;
+    animation: shop-v2-pop 0.35s ease-out;
+}
+
+.shop-v2-celebration-icon {
+    display: grid;
+    place-items: center;
+    width: 115px;
+    height: 115px;
+    margin: 0 auto 20px;
+    background: #e4f0dc;
+    border: 3px solid #c7dfbe;
+    border-radius: 26px;
+    font-size: 65px;
+}
+
+.shop-v2-celebration-panel h2 {
+    color: #294a37;
+    font-size: 27px;
+    margin: 0 0 12px;
+}
+
+.shop-v2-celebration-panel p {
+    color: #718875;
+    font-size: 14px;
+    line-height: 1.7;
+}
+
+.shop-v2-celebration-panel strong {
+    display: block;
+    margin-top: 18px;
+    color: #9c783c;
+    font-size: 19px;
+}
+
+.shop-v2-celebration-close {
+    width: 100%;
+    padding: 14px;
+    margin-top: 25px;
+    border: none;
+    border-radius: 12px;
+    background: #557a5c;
+    color: white;
+    font: inherit;
+    font-size: 14px;
+    font-weight: 700;
+    cursor: pointer;
+}
+
+.shop-v2-celebration-close:hover {
+    background: #406a49;
+}
+
+@keyframes shop-v2-pop {
+    from {
+        opacity: 0;
+        transform: translateY(20px) scale(0.85);
+    }
+
+    to {
+        opacity: 1;
+        transform: translateY(0) scale(1);
+    }
+}
+
+/* RESPONSIVE */
+
+@media (max-width: 650px) {
+    .shop-header {
+        padding: 20px;
+    }
+
+    .shop-v2-collection {
+        padding: 17px;
+    }
+
+    .shop-v2-floating {
+        font-size: 25px;
+        opacity: 0.55;
+    }
+
+    .shop-v2-celebration-panel {
+        padding: 27px 18px;
+    }
+
+    .shop-v2-celebration-icon {
+        width: 95px;
+        height: 95px;
+        font-size: 53px;
+    }
+}
+
+@media (prefers-reduced-motion: reduce) {
+
+    .shop-v2-floating,
+    .shop-v2-celebration-panel {
+        animation: none !important;
+    }
+}
+
+/* =========================================
+   AFTERGLOW GARDEN 2.0
+   STEP 21.1 — GLOBAL UI POLISH
+   ========================================= */
+
+:root {
+    --ag-primary: #557a5c;
+    --ag-primary-dark: #345e3e;
+    --ag-primary-light: #e8f2e4;
+
+    --ag-cream: #f8faf5;
+    --ag-text: #294a37;
+    --ag-muted: #748b78;
+    --ag-border: #dce8d7;
+
+    --ag-radius: 18px;
+    --ag-shadow: 0 6px 22px #294a370d;
+}
+
+/* -----------------------------------------
+   1. SMOOTH GLOBAL STYLING
+   ----------------------------------------- */
+
+html {
+    scroll-behavior: smooth;
+}
+
+body {
+    -webkit-font-smoothing: antialiased;
+    overflow-x: clip;
+}
+
+/* ทำให้คำนวณขนาดได้ถูกต้อง */
+*,
+*::before,
+*::after {
+    box-sizing: border-box;
+}
+
+/* ป้องกันภาพล้น Container */
+img,
+video,
+canvas,
+svg {
+    max-width: 100%;
+}
+
+/* -----------------------------------------
+   2. BUTTON INTERACTIONS
+   ----------------------------------------- */
+
+button,
+a {
+    -webkit-tap-highlight-color: transparent;
+}
+
+/* ปุ่มทั่วไป */
+button:not(:disabled) {
+    transition:
+        transform 0.2s ease,
+        box-shadow 0.2s ease,
+        background-color 0.2s ease;
+}
+
+/* ไม่ทำให้ปุ่มขยับเมื่อเป็น Disabled */
+button:disabled {
+    cursor: not-allowed;
+}
+
+/* Keyboard accessibility */
+button:focus-visible,
+a:focus-visible,
+input:focus-visible,
+select:focus-visible,
+textarea:focus-visible {
+    outline: 3px solid #85b591;
+    outline-offset: 3px;
+}
+
+/* -----------------------------------------
+   3. CARD POLISH
+   ----------------------------------------- */
+
+.dashboard-v2-level-card,
+.dashboard-v2-weekly-section,
+.dashboard-v2-quick-card,
+.habits-v2-progress,
+.habit-card,
+.shop-item-card,
+.shop-v2-collection,
+.inventory-v2-card {
+    box-shadow: var(--ag-shadow);
+}
+
+/* ป้องกันข้อความยาวทำให้ Layout พัง */
+.dashboard-v2,
+.dashboard-v2>*,
+.habit-card,
+.shop-item-card,
+.inventory-v2-card {
+    min-width: 0;
+}
+
+.habit-card,
+.shop-item-card,
+.dashboard-v2-quick-card {
+    overflow-wrap: anywhere;
+}
+
+/* -----------------------------------------
+   4. FORM FIELD POLISH
+   ----------------------------------------- */
+
+input:not([type="checkbox"]):not([type="radio"]),
+textarea,
+select {
+    max-width: 100%;
+}
+
+input:not([type="checkbox"]):not([type="radio"]):focus,
+textarea:focus,
+select:focus {
+    border-color: #7eac84;
+}
+
+/* -----------------------------------------
+   5. DASHBOARD RESPONSIVE
+   ----------------------------------------- */
+
+@media (max-width: 900px) {
+    .dashboard-v2 {
+        width: 100%;
+    }
+
+    .dashboard-v2-hero {
+        grid-template-columns: 1fr;
+    }
+
+    .dashboard-v2-artwork {
+        min-height: 190px;
+    }
+
+    .dashboard-v2-quick-grid {
+        grid-template-columns:
+            repeat(2, minmax(0, 1fr));
+    }
+}
+
+/* -----------------------------------------
+   6. TABLET RESPONSIVE
+   ----------------------------------------- */
+
+@media (max-width: 768px) {
+    .dashboard-v2 {
+        gap: 16px;
+    }
+
+    .dashboard-v2-hero-text {
+        padding: 24px;
+    }
+
+    .dashboard-v2-level-card,
+    .dashboard-v2-weekly-section,
+    .habits-v2-progress {
+        padding: 20px;
+    }
+
+    .shop-v2-collection {
+        padding: 18px;
+    }
+
+    /* ให้ Inventory เปลี่ยนแถวตามความกว้าง */
+    .free-garden-inventory {
+        display: flex;
+        flex-wrap: wrap;
+    }
+}
+
+/* -----------------------------------------
+   7. MOBILE RESPONSIVE
+   ----------------------------------------- */
+
+@media (max-width: 480px) {
+    .dashboard-v2-hero {
+        border-radius: 17px;
+    }
+
+    .dashboard-v2-hero-text {
+        padding: 20px;
+    }
+
+    .dashboard-v2-hero-text h2 {
+        font-size: 25px;
+    }
+
+    .dashboard-v2-hero-actions {
+        width: 100%;
+    }
+
+    .dashboard-v2-button {
+        flex: 1 1 auto;
+        text-align: center;
+    }
+
+    .dashboard-v2-quick-grid {
+        gap: 9px;
+    }
+
+    .dashboard-v2-quick-card {
+        padding: 13px;
+        gap: 8px;
+    }
+
+    .dashboard-v2-quick-icon {
+        width: 42px;
+        height: 42px;
+        font-size: 23px;
+    }
+
+    .dashboard-v2-weekly-chart {
+        gap: 5px;
+    }
+
+    .dashboard-v2-weekly-count,
+    .dashboard-v2-weekly-day {
+        font-size: 10px;
+    }
+
+    .habits-v2-progress {
+        padding: 16px;
+    }
+
+    .habits-v2-progress-footer {
+        flex-direction: column;
+        gap: 6px;
+    }
+
+    .shop-v2-collection {
+        gap: 12px;
+    }
+
+    .shop-v2-collection-icon {
+        width: 48px;
+        height: 48px;
+        font-size: 27px;
+    }
+
+    .shop-v2-collection-text h3 {
+        font-size: 16px;
+    }
+
+    .free-garden-toolbar {
+        padding: 13px;
+    }
+
+    .free-inventory-item {
+        min-height: 48px;
+        padding: 8px 10px;
+    }
+
+    /* ปรับป้ายของตกแต่ง */
+    .free-placed-label {
+        font-size: 9px;
+    }
+}
+
+/* -----------------------------------------
+   8. REDUCED MOTION
+   ----------------------------------------- */
+
+@media (prefers-reduced-motion: reduce) {
+    html {
+        scroll-behavior: auto;
+    }
+
+    .dashboard-v2 *,
+    .habits-v2-progress *,
+    .shop-item-card,
+    .free-inventory-item {
+        transition-duration: 0.01ms !important;
+    }
+}
